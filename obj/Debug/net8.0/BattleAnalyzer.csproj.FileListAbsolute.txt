@@ -1,0 +1,14 @@
+C:\Users\augus\Documents\Draft\battle-analyzer\bin\Debug\net8.0\BattleAnalyzer.exe
+C:\Users\augus\Documents\Draft\battle-analyzer\bin\Debug\net8.0\BattleAnalyzer.deps.json
+C:\Users\augus\Documents\Draft\battle-analyzer\bin\Debug\net8.0\BattleAnalyzer.runtimeconfig.json
+C:\Users\augus\Documents\Draft\battle-analyzer\bin\Debug\net8.0\BattleAnalyzer.dll
+C:\Users\augus\Documents\Draft\battle-analyzer\bin\Debug\net8.0\BattleAnalyzer.pdb
+C:\Users\augus\Documents\Draft\battle-analyzer\obj\Debug\net8.0\BattleAnalyzer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\augus\Documents\Draft\battle-analyzer\obj\Debug\net8.0\BattleAnalyzer.AssemblyInfoInputs.cache
+C:\Users\augus\Documents\Draft\battle-analyzer\obj\Debug\net8.0\BattleAnalyzer.AssemblyInfo.cs
+C:\Users\augus\Documents\Draft\battle-analyzer\obj\Debug\net8.0\BattleAnalyzer.csproj.CoreCompileInputs.cache
+C:\Users\augus\Documents\Draft\battle-analyzer\obj\Debug\net8.0\BattleAnalyzer.dll
+C:\Users\augus\Documents\Draft\battle-analyzer\obj\Debug\net8.0\refint\BattleAnalyzer.dll
+C:\Users\augus\Documents\Draft\battle-analyzer\obj\Debug\net8.0\BattleAnalyzer.pdb
+C:\Users\augus\Documents\Draft\battle-analyzer\obj\Debug\net8.0\BattleAnalyzer.genruntimeconfig.cache
+C:\Users\augus\Documents\Draft\battle-analyzer\obj\Debug\net8.0\ref\BattleAnalyzer.dll
