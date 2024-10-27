@@ -1,0 +1,7 @@
+- Turn State machine:
+	- Decide slow pivot (e.g. teleport) if switch in does something or not (e.g. terrain)
+	- Decide slow pivot (U-turn) in same way
+- Death with spikes or hazard
+- Death with poison or burn
+- Death of recoil damage
+- Future sight
