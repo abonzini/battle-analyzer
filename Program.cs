@@ -266,21 +266,9 @@ namespace BattleAnalyzer
                         }
                         break;
                     case "-ability": // A mon activated an ability and so it just did something (e.g. terrain on switch in)
-                        string[] ability_data = battle_data_lines[2].Split(':');
-                        current_team = battle_data.getTeam(ability_data[0]);
-                        int ability_owner = current_team.TeamNumber;
-                        current_poke_nickname = ability_data[1].Trim(' ');
-                        current_poke = current_team.GetMonByNickname(current_poke_nickname);
-                        PrintUtilities.printString($"\t\t-{current_poke} activated ability {battle_data_lines[3]}\n", ConsoleColor.White, ConsoleColor.Black);
                         turn_state_machine.Ability();
                         break;
                     case "-heal": // A mon activated an ability and so it just did something (e.g. terrain on switch in)
-                        string[] heal_data = battle_data_lines[2].Split(':');
-                        current_team = battle_data.getTeam(heal_data[0]);
-                        int heal_owner = current_team.TeamNumber;
-                        current_poke_nickname = heal_data[1].Trim(' ');
-                        current_poke = current_team.GetMonByNickname(current_poke_nickname);
-                        PrintUtilities.printString($"\t\t-{current_poke} healed {battle_data_lines[4]}\n", ConsoleColor.White, ConsoleColor.Black);
                         turn_state_machine.Heal();
                         break;
                     case "faint": // mon fainted either from event (attack) or recoil (or status?)
