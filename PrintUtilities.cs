@@ -22,7 +22,7 @@ namespace BattleAnalyzer
             outputtext.WriteLine("POKEMON,K,D,Turns");
             foreach (PokemonData pokemon in current_team.PokemonInTeam.Values)
             {
-                outputtext.WriteLine($"{pokemon.Name},{pokemon.NumberOfKills},{pokemon.NumberOfDeaths},{pokemon.NumberOfHalfTurns}");
+                outputtext.WriteLine($"{pokemon.Name},{pokemon.NumberOfKills},{pokemon.NumberOfDeaths},{pokemon.NumberOfTurns:0.0}");
             }
         }
     }

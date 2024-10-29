@@ -32,12 +32,14 @@ namespace BattleAnalyzer
     }
     public class BattleData
     {
-        TeamData player_1_data = new TeamData(); // The teams involved
-        TeamData player_2_data = new TeamData();
+        TeamData[] player_data = new TeamData[2]; // Both players
         public BattleData()
         {
-            player_1_data.TeamNumber = 1;
-            player_2_data.TeamNumber = 2;
+            for (int i = 0; i < player_data.Length; i++)
+            {
+                player_data[i] = new TeamData();
+                player_data[i].TeamNumber = i+1;
+            }
         }
         public TeamData getTeam(string identifier) // Returns a team given team string (p1, p2, p1a, p2a, etc)
         {
@@ -49,20 +51,17 @@ namespace BattleAnalyzer
         }
         public TeamData getTeam(int team_number)
         {
-            switch (team_number)
-            {
-                case 1:
-                    return player_1_data;
-                case 2:
-                    return player_2_data;
-                default:
-                    throw new Exception($"INVALID PLAYER FOUND DURING PARSING: {team_number}!");
-            }
+            return player_data[team_number-1];
         }
         public TeamData getTeamFromName(string name)
         {
-            if (player_1_data.Name == name) return player_1_data;
-            if (player_2_data.Name == name) return player_2_data;
+            foreach (TeamData team in player_data)
+            {
+                if(team.Name == name)
+                {
+                    return team;
+                }
+            }
             throw new Exception("Requested nonexistant team name!");
         }
     }
@@ -87,14 +86,14 @@ namespace BattleAnalyzer
         }
 
         public string Name = "";
-        public int NumberOfHalfTurns = 0;
+        public float NumberOfTurns = 0.0f;
         public int NumberOfKills = 0;
         public int NumberOfDeaths = 0;
         public Dictionary<string, string> DamagingEventsAndUser = new Dictionary<string, string>();
 
         public override string ToString()
         {
-            return $"{Name} {NumberOfHalfTurns}HT {NumberOfKills}K {NumberOfDeaths}D";
+            return $"{Name} {NumberOfTurns:0.0}T {NumberOfKills}K {NumberOfDeaths}D";
         }
     }
 }

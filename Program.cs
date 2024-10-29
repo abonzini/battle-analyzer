@@ -4,11 +4,12 @@ namespace BattleAnalyzer
 {
     internal class Program
     {
-        const bool DEBUG = true;
+        const bool DEBUG = false;
         static void Main(string[] args)
         {
             BattleData battle_data = new BattleData(); // info about current battle
             EventData current_event = new EventData(); // Contains info about current event like an attack
+            TurnCounter turn_state_machine = new TurnCounter(battle_data); // Holds info about ongoing turn and keeps the pace (and logs)
 
             // Start Battle, open file
             string file_name;
@@ -57,31 +58,31 @@ namespace BattleAnalyzer
                         string[] switch_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(switch_data[0]);
                         current_poke = switch_data[1].Trim(' '); // Remove spaces, now i got the mon
-                        PrintUtilities.printString($"P{current_team}'s {current_poke} switch in\n", ConsoleColor.White, ConsoleColor.Black);
-                        // TODO SWITCH LOGIC!
+                        turn_state_machine.SwitchIn(current_team.TeamNumber, current_poke);
+                        PrintUtilities.printString($"{current_team}'s {current_poke} switch in\n", ConsoleColor.White, ConsoleColor.Black);
                         break;
                     case "turn": // VERY IMPORTANT, turn begins, mons start in turn full and (except first turn) the previous turn is loaded
-                        // TODO: SWITCH AND TURN LOGIC
-                        PrintUtilities.printString($"Turn {int.Parse(battle_data_lines[2])}\n", ConsoleColor.Yellow, ConsoleColor.Black);
+                        turn_state_machine.StartTurn(int.Parse(battle_data_lines[2]));
                         break;
                     case "move": // A mon used a move, maaaybe damaging, we'll see
                         // Move is an event
                         current_event.event_name = battle_data_lines[3]; // Name of move
                         string[] move_data = battle_data_lines[2].Split(':');
-                        current_event.player_user = move_data[0][1] - '0'; // Number of player obtained in dirty way
+                        current_event.player_user = battle_data.getTeam(move_data[0]).TeamNumber;
                         current_event.user = move_data[1].Trim(' '); // Remove spaces, now i got the mon
                         // Repeat for target
                         move_data = battle_data_lines[4].Split(':');
-                        current_event.player_target = move_data[0][1] - '0';
+                        current_event.player_target = battle_data.getTeam(move_data[0]).TeamNumber;
                         current_event.target = move_data[1].Trim(' ');
                         PrintUtilities.printString("\t-"+current_event+"\n", ConsoleColor.White, ConsoleColor.Black);
+                        turn_state_machine.Move(); // Notify of move
                         break;
                     case "-damage": // Part of the event, mon received damage and possibly fainted
                         // TODO: What happens with future sight/doom desire?
                         if (battle_data_lines[3].Contains("fnt")) // Target of attack received lethal damage!
                         {
                             string[] fainted_mon_data = battle_data_lines[2].Split(':');
-                            int dead_owner = fainted_mon_data[0][1] - '0';
+                            int dead_owner = battle_data.getTeam(fainted_mon_data[0]).TeamNumber;
                             current_poke = fainted_mon_data[1].Trim(' '); // Remove spaces, now i got the mon
                             if(current_poke == current_event.target && dead_owner == current_event.player_target) // The dead mon was the target of the attack, so it was killed!
                             {
@@ -101,12 +102,14 @@ namespace BattleAnalyzer
                         int ability_owner = ability_data[0][1] - '0';
                         current_poke = ability_data[1].Trim(' ');
                         PrintUtilities.printString($"\t\t-{current_poke} activated ability {battle_data_lines[3]}\n", ConsoleColor.White, ConsoleColor.Black);
+                        turn_state_machine.Ability();
                         break;
                     case "-heal": // A mon activated an ability and so it just did something (e.g. terrain on switch in)
                         string[] heal_data = battle_data_lines[2].Split(':');
                         int heal_owner = heal_data[0][1] - '0';
                         current_poke = heal_data[1].Trim(' ');
                         PrintUtilities.printString($"\t\t-{current_poke} healed {battle_data_lines[4]}\n", ConsoleColor.White, ConsoleColor.Black);
+                        turn_state_machine.Heal();
                         break;
                     case "faint": // mon fainted either from event (attack) or recoil (or status?)
                         string[] faint_data = battle_data_lines[2].Split(':');
@@ -114,11 +117,13 @@ namespace BattleAnalyzer
                         current_poke = faint_data[1].Trim(' ');
                         current_team.PokemonInTeam[current_poke].NumberOfDeaths++;
                         PrintUtilities.printString($"\t-{current_poke} died ({current_team.PokemonInTeam[current_poke].NumberOfDeaths} TOTAL DEATHS)\n\n", ConsoleColor.Red, ConsoleColor.Black);
+                        turn_state_machine.Faint(current_team.TeamNumber, current_poke);
                         break;
                     case "win": // A player won, let's set that flag up
                         string winner = battle_data_lines[2];
                         current_team = battle_data.getTeamFromName(winner);
                         current_team.Winner = true;
+                        turn_state_machine.Win();
                         break;
                     default: // Many commands (like chat or join) are not analised
                         break;
@@ -142,7 +147,7 @@ namespace BattleAnalyzer
                 diff = winner_team.PokemonInTeam.Count;
                 foreach(PokemonData pokemon in winner_team.PokemonInTeam.Values)
                 {
-                    if(pokemon.NumberOfDeaths >0)
+                    if(pokemon.NumberOfDeaths > 0)
                     {
                         diff--;
                     }
@@ -155,6 +160,9 @@ namespace BattleAnalyzer
                 current_team = battle_data.getTeam(2);
                 PrintUtilities.ExportMonData(outputtext, current_team, diff);
             }
+
+            Console.WriteLine("\n----- PRESS ENTER TO FINISH -----");
+            Console.ReadLine();
         }
     }
 }
