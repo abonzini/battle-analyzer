@@ -68,8 +68,17 @@ namespace BattleAnalyzer
         public int TeamNumber = 0; // Team 1 or 2
         public Dictionary<string, PokemonData> PokemonInTeam = new Dictionary<string, PokemonData>();
         public Dictionary<string, string> DamagingFieldEffectAndLastUser = new Dictionary<string, string>();
+        static bool first_urshifu = true; // Horrible patch because urshifu is an asshole
         public void SetNickname(string mon, string nickname)
         {
+            if(mon.Contains("Urshifu"))
+            {
+                if (first_urshifu)
+                {
+                    ChangeMonForm("Urshifu-*", mon); // First time I need to replace -* with actual nickname
+                    first_urshifu = false;
+                }
+            }
             PokemonInTeam[mon].Nickname = nickname;
         }
         public string GetMonByNickname(string nickname)
