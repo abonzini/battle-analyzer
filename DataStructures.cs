@@ -97,6 +97,10 @@ namespace BattleAnalyzer
             PokemonInTeam.Add(form, new_mon);
             return old_mon;
         }
+        public bool HasMon(string mon)
+        {
+            return PokemonInTeam.ContainsKey(mon);
+        }
         public override string ToString()
         {
             return $"{Name}";

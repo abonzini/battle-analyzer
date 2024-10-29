@@ -98,7 +98,7 @@ namespace BattleAnalyzer
                         }
                         else
                         {
-                            throw new Exception("Event happened and game hasn't even started!");
+                            finished_state_operation = true; // Some things are ignored
                         }
                         break;
                     case TurnState.TURN_START: // In this case, the currently active mons are insta-set as active, lists are cleaned as a new start began

@@ -1,9 +1,3 @@
-- Death with spikes or hazard
-- Death with poison or burn
-- Death of recoil damage (I think it works but I need to verify)
 - Future sight
 - Perish song
 - Zoroark
-- Mega evo
-
-- FRIENDLY OPEN FILE WINDOW FOR USERS
