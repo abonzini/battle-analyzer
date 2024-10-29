@@ -8,26 +8,22 @@ using System.Threading.Tasks;
 
 namespace BattleAnalyzer
 {
-    public class EventData // This class contains data about an event such an attack or so, they can result in death which is important to track who caused the kill
+    public class AttackData // This class contains data about an event such an attack or so, they can result in death which is important to track who caused the kill
     {
         public void clear()
         {
-            event_name = "";
+            attack_name = "";
             user = "";
-            target = "";
             player_user = 0;
-            player_target = 0;
     }
 
-        public string event_name = "";
+        public string attack_name = "";
         public string user = "";
         public int player_user = 0;
-        public string target = "";
-        public int player_target = 0;
 
         public override string ToString()
         {
-            return $"P{player_user}'s {user} used {event_name} on P{player_target}'s {target}";
+            return $"P{player_user}'s {user} used {attack_name}";
         }
     }
     public class BattleData
@@ -86,6 +82,20 @@ namespace BattleAnalyzer
                 }
             }
             throw new Exception("Fetching a nickname that doesn't exist!");
+        }
+        public string ChangeMonForm(string nickname, string form) // Changes the form name (e.g. mega). Returns old name of what changed
+        {
+            PokemonData new_mon = new PokemonData(form);
+            new_mon.Nickname = nickname;
+            string old_mon = GetMonByNickname(nickname); // Get the old entry
+            PokemonData old_mon_data = PokemonInTeam[old_mon];
+            new_mon.NumberOfTurns = old_mon_data.NumberOfTurns; // Copy values
+            new_mon.NumberOfDeaths = old_mon_data.NumberOfDeaths;
+            new_mon.NumberOfKills = old_mon_data.NumberOfKills;
+            // Replace
+            PokemonInTeam.Remove(old_mon);
+            PokemonInTeam.Add(form, new_mon);
+            return old_mon;
         }
         public override string ToString()
         {

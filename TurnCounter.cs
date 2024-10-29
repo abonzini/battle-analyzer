@@ -301,5 +301,26 @@ namespace BattleAnalyzer
         {
             ExecuteStateMachine(EventTypes.WIN);
         }
+
+        public void ChangeMonName(int player, string old_name, string new_name) // For mega for example. Will need to update all turns in here
+        {
+            player--;
+            if (current_mons[player].name == old_name) // Usually the case as megas are the current mon. IDK if there's form change out of main mon
+            {
+                MonData new_mon = new MonData(new_name); // Replace old with new
+                new_mon.acted = current_mons[player].acted;
+                new_mon.dead = current_mons[player].dead;
+                current_mons[player] = new_mon;
+            }
+            if (all_mons_this_turn[player].ContainsKey(old_name)) // Old name also here for some reason
+            {
+                MonData old_mon = all_mons_this_turn[player][old_name];
+                MonData new_mon = new MonData(new_name);
+                new_mon.acted = old_mon.acted; // Create a mon with same data but different name
+                new_mon.dead = old_mon.dead;
+                all_mons_this_turn[player].Add(new_name, new_mon); // Replace it in list
+                all_mons_this_turn[player].Remove(old_name);
+            }
+        }
     }
 }

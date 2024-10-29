@@ -8,7 +8,7 @@ namespace BattleAnalyzer
         static void Main(string[] args)
         {
             BattleData battle_data = new BattleData(); // info about current battle
-            EventData current_event = new EventData(); // Contains info about current event like an attack
+            AttackData current_attack = new AttackData(); // Contains info about current event like an attack
             TurnCounter turn_state_machine = new TurnCounter(battle_data); // Holds info about ongoing turn and keeps the pace (and logs)
 
             // Start Battle, open file
@@ -17,7 +17,7 @@ namespace BattleAnalyzer
             if (args.Length == 0) // File not included, need to ask for it
             {
                 PrintUtilities.printString("Please input file name of battle to analyze\n", ConsoleColor.White, ConsoleColor.Black);
-                file_name = "test.html"; // Console.ReadLine()!;
+                file_name = "test3.html"; // Console.ReadLine()!;
             }
             else
             {
@@ -44,7 +44,7 @@ namespace BattleAnalyzer
                 string[] battle_data_lines = line.Split('|'); // Get each element
                 if (battle_data_lines[1].Length == 0 || battle_data_lines[1][0] != '-') // Defines new event, lines with - are part of previous event
                 {
-                    current_event.clear();
+                    current_attack.clear();
                 }
                 switch (battle_data_lines[1]) // Check the second value (command, always?) and do different stuff for each
                 {
@@ -71,42 +71,45 @@ namespace BattleAnalyzer
                         turn_state_machine.StartTurn(int.Parse(battle_data_lines[2]));
                         break;
                     case "move": // A mon used a move, maaaybe damaging, we'll see
-                        // Move is an event
-                        current_event.event_name = battle_data_lines[3]; // Name of move
+                        // Move is an event, I record who used it
+                        current_attack.attack_name = battle_data_lines[3]; // Name of move
                         string[] move_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(move_data[0]);
-                        current_event.player_user = current_team.TeamNumber;
+                        current_attack.player_user = current_team.TeamNumber;
                         current_poke_nickname = move_data[1].Trim(' '); // Remove spaces, now i got the mon
-                        current_event.user = current_team.GetMonByNickname(current_poke_nickname);
-                        // Repeat for target
-                        move_data = battle_data_lines[4].Split(':');
-                        current_team = battle_data.getTeam(move_data[0]);
-                        current_event.player_target = current_team.TeamNumber;
-                        current_poke_nickname = move_data[1].Trim(' ');
-                        current_event.target = current_team.GetMonByNickname(current_poke_nickname);
-                        PrintUtilities.printString("\t-"+current_event+"\n", ConsoleColor.White, ConsoleColor.Black);
+                        current_attack.user = current_team.GetMonByNickname(current_poke_nickname);
+                        // Notify all parts
+                        PrintUtilities.printString($"\t-{battle_data.getTeam(current_attack.player_user)}'s {current_attack.user} used {current_attack.attack_name}\n", ConsoleColor.White, ConsoleColor.Black);
                         turn_state_machine.Move(); // Notify of move
                         break;
+                    case "detailschange":
+                        //|detailschange|p2a: Mega-Swampass|Swampert-Mega
+                        string[] form_change_data = battle_data_lines[2].Split(':');
+                        current_team = battle_data.getTeam(form_change_data[0]);
+                        current_poke_nickname = form_change_data[1].Trim(' '); // Remove spaces, now i got the mon
+                        current_poke = battle_data_lines[3].Split(',')[0];
+                        // Got all info Í need, update
+                        string old_form_name = current_team.ChangeMonForm(current_poke_nickname, current_poke); // Notify all elements of change!
+                        turn_state_machine.ChangeMonName(current_team.TeamNumber, old_form_name, current_poke);
+                        PrintUtilities.printString($"{old_form_name} became {current_poke}\n", ConsoleColor.White, ConsoleColor.Black);
+                        break;
                     case "-damage": // Part of the event, mon received damage and possibly fainted
-                        // TODO: What happens with future sight/doom desire?
+                        AttackData damage_source;
+                        // FOR NOW UNTIL WE PARSE MULTIPLE SOURCE DAMAGE
+                        damage_source = current_attack; // Will be only in some cases!
                         if (battle_data_lines[3].Contains("fnt")) // Target of attack received lethal damage!
                         {
                             string[] fainted_mon_data = battle_data_lines[2].Split(':');
                             current_team = battle_data.getTeam(fainted_mon_data[0]);
                             int dead_owner = current_team.TeamNumber;
                             current_poke_nickname = fainted_mon_data[1].Trim(' '); // Remove spaces, now i got the mon
-                            current_poke = current_team.GetMonByNickname(current_poke_nickname);
-                            if(current_poke == current_event.target && dead_owner == current_event.player_target) // The dead mon was the target of the attack, so it was killed!
-                            {
-                                current_team = battle_data.getTeam(current_event.player_user); // Find player and mon that killed
-                                current_poke = current_event.user;
-                                current_team.PokemonInTeam[current_poke].NumberOfKills++; // Assign kill
-                                PrintUtilities.printString($"\t\t-{current_event.user} killed {current_event.target} with {current_event.event_name} ({current_team.PokemonInTeam[current_poke].NumberOfKills} TOTAL KILLS)\n", ConsoleColor.Red, ConsoleColor.Black);
-                            }
-                            else
-                            {//Wtf
-                                throw new Exception("Not sure what happened here, a mon died from attack without being targeted");
-                            }
+                            string dead_poke = current_poke = current_team.GetMonByNickname(current_poke_nickname);
+                            // I discovered who fainted and deduced who did it, now I need to apply kill
+
+                            current_team = battle_data.getTeam(current_attack.player_user); // Find player and mon that killed
+                            current_poke = current_attack.user;
+                            current_team.PokemonInTeam[current_poke].NumberOfKills++; // Assign kill
+                            PrintUtilities.printString($"\t\t-{current_attack.user} killed {dead_poke} with {current_attack.attack_name} ({current_team.PokemonInTeam[current_poke].NumberOfKills} TOTAL KILLS)\n", ConsoleColor.Red, ConsoleColor.Black);
                         }
                         break;
                     case "-ability": // A mon activated an ability and so it just did something (e.g. terrain on switch in)
