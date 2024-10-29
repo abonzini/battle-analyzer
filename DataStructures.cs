@@ -72,6 +72,21 @@ namespace BattleAnalyzer
         public int TeamNumber = 0; // Team 1 or 2
         public Dictionary<string, PokemonData> PokemonInTeam = new Dictionary<string, PokemonData>();
         public Dictionary<string, string> DamagingFieldEffectAndLastUser = new Dictionary<string, string>();
+        public void SetNickname(string mon, string nickname)
+        {
+            PokemonInTeam[mon].Nickname = nickname;
+        }
+        public string GetMonByNickname(string nickname)
+        {
+            foreach(PokemonData mon in PokemonInTeam.Values)
+            {
+                if(mon.Nickname == nickname)
+                {
+                    return mon.Name;
+                }
+            }
+            throw new Exception("Fetching a nickname that doesn't exist!");
+        }
         public override string ToString()
         {
             return $"{Name}";
@@ -83,9 +98,11 @@ namespace BattleAnalyzer
         public PokemonData(string name)
         {
             Name = name;
+            Nickname = name; // By default, the same, if a nickname appears I override
         }
 
         public string Name = "";
+        public string Nickname = "";
         public float NumberOfTurns = 0.0f;
         public int NumberOfKills = 0;
         public int NumberOfDeaths = 0;
@@ -93,7 +110,7 @@ namespace BattleAnalyzer
 
         public override string ToString()
         {
-            return $"{Name} {NumberOfTurns:0.0}T {NumberOfKills}K {NumberOfDeaths}D";
+            return $"{Name} {NumberOfTurns:0.0}T {NumberOfKills}K {NumberOfDeaths}D ({Nickname})";
         }
     }
 }
