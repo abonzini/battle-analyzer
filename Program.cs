@@ -218,35 +218,24 @@ namespace BattleAnalyzer
                             {
                                 damage_source = new AttackData();
                                 damage_source.attack_name = battle_data_lines[4].Replace("[from] ", "");
-                                string[] damage_data;
-                                if (battle_data_lines.Length > 5 && battle_data_lines[5].Contains("[of]")) // Means we get the cause right here
+
+                                // The source needs to be tracked, and it's probably a case of status or field
+                                if (current_team.DamagingFieldEffectAndLastUser.ContainsKey(damage_source.attack_name)) // Found the field effect that caused it
                                 {
-                                    current_poke = battle_data_lines[5];
-                                    damage_data = battle_data_lines[5].Replace("[of] ", "").Split(':');
-                                    current_team = battle_data.getTeam(damage_data[0]);
-                                    damage_source.player_user = current_team.TeamNumber;
-                                    damage_source.user = damage_data[1].Trim(' '); // Got the details
+                                    damage_source.user = current_team.DamagingFieldEffectAndLastUser[damage_source.attack_name];
+                                    damage_source.player_user = (current_team.TeamNumber == 1) ? 2 : 1; // The cause is ALWAYS the other player, confirmed
+                                }
+                                else if(current_team.HasMon(dead_poke) && current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser.ContainsKey(damage_source.attack_name)) // Find if pokemon is there and if the casue of death is a status caused by someone
+                                {
+                                    // Means i found the culprit
+                                    damage_source.user = current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser[damage_source.attack_name];
+                                    damage_source.player_user = (current_team.TeamNumber == 1) ? 2 : 1; // The cause is ALWAYS the other player, confirmed
                                 }
                                 else
                                 {
-                                    // Otherwise the source needs to be tracked, and it's probably a case of status or field
-                                    if (current_team.DamagingFieldEffectAndLastUser.ContainsKey(damage_source.attack_name)) // Found the field effect that caused it
-                                    {
-                                        damage_source.user = current_team.DamagingFieldEffectAndLastUser[damage_source.attack_name];
-                                        damage_source.player_user = (current_team.TeamNumber == 1) ? 2 : 1; // The cause is ALWAYS the other player, confirmed
-                                    }
-                                    else if(current_team.HasMon(dead_poke) && current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser.ContainsKey(damage_source.attack_name)) // Find if pokemon is there and if the casue of death is a status caused by someone
-                                    {
-                                        // Means i found the culprit
-                                        damage_source.user = current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser[damage_source.attack_name];
-                                        damage_source.player_user = (current_team.TeamNumber == 1) ? 2 : 1; // The cause is ALWAYS the other player, confirmed
-                                    }
-                                    else
-                                    {
-                                        // Not sure what else could have killed, so i skip this death
-                                        PrintUtilities.printString($"\t\t-{dead_poke} died of mysterious circumstances: {damage_source.attack_name}\n", ConsoleColor.Red, ConsoleColor.Black);
-                                        break;
-                                    }
+                                    // Not sure what else could have killed, so i skip this death
+                                    PrintUtilities.printString($"\t\t-{dead_poke} died of mysterious circumstances: {damage_source.attack_name}\n", ConsoleColor.Red, ConsoleColor.Black);
+                                    break;
                                 }
                             }
                             else
@@ -315,12 +304,12 @@ namespace BattleAnalyzer
                     }
                 }
                 // Save for player 1
-                PrintUtilities.ExportMonData(outputtext, current_team, diff);
+                PrintUtilities.ExportMonData(outputtext, current_team, diff, turn_state_machine);
                 // Empty line
                 outputtext.WriteLine();
                 // Save for player 2
                 current_team = battle_data.getTeam(2);
-                PrintUtilities.ExportMonData(outputtext, current_team, diff);
+                PrintUtilities.ExportMonData(outputtext, current_team, diff, turn_state_machine);
             }
 
             Console.WriteLine("\n----- PRESS ENTER TO FINISH -----");
