@@ -15,10 +15,10 @@ namespace BattleAnalyzer
             Console.Write(str);
             Console.ResetColor();
         }
-        public static void ExportMonData(StreamWriter outputtext, TeamData current_team, int diff)
+        public static void ExportMonData(StreamWriter outputtext, TeamData current_team, int diff, TurnCounter turns)
         {
             outputtext.WriteLine($"{current_team.Name},W/L,+/-,TT");
-            outputtext.WriteLine($"RESULT,{((current_team.Winner) ? 'W' : 'L')},{((current_team.Winner) ? diff : -diff)},0"); // TODO TURN NUMBERS
+            outputtext.WriteLine($"RESULT,{((current_team.Winner) ? 'W' : 'L')},{((current_team.Winner) ? diff : -diff)},{turns.turn_number}"); // TODO TURN NUMBERS
             outputtext.WriteLine("POKEMON,K,D,Turns");
             foreach (PokemonData pokemon in current_team.PokemonInTeam.Values)
             {

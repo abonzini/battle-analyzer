@@ -58,7 +58,7 @@ namespace BattleAnalyzer
         TeamData[] teams = new TeamData[2]; // Info about the two teams
         MonData[] current_mons = new MonData[2]; // Contains tuple of mon (and turn info, active this turn and/or dead)
         Dictionary<string, MonData>[] all_mons_this_turn = new Dictionary<string, MonData>[2]; // Historical mon data for this turn
-        int turn_number;
+        public int turn_number;
         TurnState state;
         BattleData battle_data;
         InternalData internal_data = new InternalData(); // For extra info to pass to state machine
