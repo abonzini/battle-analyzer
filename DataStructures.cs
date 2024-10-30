@@ -71,13 +71,23 @@ namespace BattleAnalyzer
         static bool first_urshifu = true; // Horrible patch because urshifu is an asshole
         public void SetNickname(string mon, string nickname)
         {
-            if(mon.Contains("Urshifu"))
+            if(!PokemonInTeam.ContainsKey(mon)) // Not found?! then it means that it's a mon with -* (unknown form??)
             {
-                if (first_urshifu)
+                bool found_unknown = false;
+                foreach(string pokemon_prev_name in PokemonInTeam.Keys)
                 {
-                    ChangeMonForm("Urshifu-*", mon); // First time I need to replace -* with actual nickname
-                    first_urshifu = false;
+                    if (!PokemonInTeam[pokemon_prev_name].DiscoveredName) // Found a mon with an undiscovered nickname
+                    {
+                        if (mon.Split('-')[0] == pokemon_prev_name.Split('-')[0]) // If same species, got the mon
+                        {
+                            found_unknown = true;
+                            PokemonInTeam[pokemon_prev_name].DiscoveredName = true;
+                            ChangeMonForm(pokemon_prev_name, mon); // Change to correct species
+                            break;
+                        }
+                    }
                 }
+                if (!found_unknown) throw new Exception("Mon not in team!");
             }
             PokemonInTeam[mon].Nickname = nickname;
         }
@@ -101,6 +111,7 @@ namespace BattleAnalyzer
             new_mon.NumberOfTurns = old_mon_data.NumberOfTurns; // Copy values
             new_mon.NumberOfDeaths = old_mon_data.NumberOfDeaths;
             new_mon.NumberOfKills = old_mon_data.NumberOfKills;
+            new_mon.DiscoveredName = old_mon_data.DiscoveredName;
             // Replace
             PokemonInTeam.Remove(old_mon);
             PokemonInTeam.Add(form, new_mon);
@@ -130,6 +141,7 @@ namespace BattleAnalyzer
         public int NumberOfKills = 0;
         public int NumberOfDeaths = 0;
         public Dictionary<string, string> DamagingEventsAndUser = new Dictionary<string, string>();
+        public bool DiscoveredName = true;
 
         public override string ToString()
         {

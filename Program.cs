@@ -57,8 +57,14 @@ namespace BattleAnalyzer
                     case "poke": // Defines which poke in which team
                         current_team = battle_data.getTeam(battle_data_lines[2]);
                         string[] pokemon_to_add = battle_data_lines[3].Split(','); // Separate mon from gender
-                        current_team.PokemonInTeam.Add(pokemon_to_add[0], new PokemonData(pokemon_to_add[0]));
+                        PokemonData mon_to_add = new PokemonData(pokemon_to_add[0]);
+                        if (pokemon_to_add[0].Contains("-*")) // Unknown forms pre-battle
+                        {
+                            mon_to_add.DiscoveredName = false;
+                        }
+                        current_team.PokemonInTeam.Add(mon_to_add.Name, mon_to_add);
                         break;
+                    case "drag":
                     case "switch": // Pokemon has been switched in, the older one in the turn is marked as old and new one is the main
                         string[] switch_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(switch_data[0]);
