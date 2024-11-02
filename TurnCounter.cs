@@ -322,5 +322,9 @@ namespace BattleAnalyzer
                 all_mons_this_turn[player].Remove(old_name);
             }
         }
+        public string GetCurrentMon(int player)
+        {
+            return current_mons[player-1].name;
+        }
     }
 }

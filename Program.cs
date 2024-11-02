@@ -89,6 +89,16 @@ namespace BattleAnalyzer
                         PrintUtilities.printString($"\t-{battle_data.getTeam(current_attack.player_user)}'s {current_attack.user} used {current_attack.attack_name}\n", ConsoleColor.White, ConsoleColor.Black);
                         turn_state_machine.Move(); // Notify of move
                         break;
+                    case "replace": // For zoroark things
+                        // Very similar to change form but only current in-turn record is changed (all we can do)
+                        string[] replace_data = battle_data_lines[2].Split(':');
+                        current_team = battle_data.getTeam(replace_data[0]);
+                        current_poke_nickname = replace_data[1].Trim(' '); // Remove spaces, now i got the mon
+                        current_poke = battle_data_lines[3].Split(',')[0];
+                        string prev_mon_illusion = turn_state_machine.GetCurrentMon(current_team.TeamNumber); // This mon needs to be replaced in turn counter
+                        turn_state_machine.ChangeMonName(current_team.TeamNumber, prev_mon_illusion, current_poke);
+                        PrintUtilities.printString($"{prev_mon_illusion} was {current_poke}!\n", ConsoleColor.White, ConsoleColor.Black);
+                        break;
                     case "detailschange":
                         //|detailschange|p2a: Mega-Swampass|Swampert-Mega
                         string[] form_change_data = battle_data_lines[2].Split(':');
