@@ -67,6 +67,10 @@ namespace BattleAnalyzer
         {
             state = TurnState.TURN_0;
             battle_data = data;
+            for (int i = 0; i < all_mons_this_turn.Length; i++)
+            {
+                all_mons_this_turn[i] = new Dictionary<string, MonData>(); // Empty dict
+            }
         }
 
         void ExecuteStateMachine(EventTypes turn_event)
