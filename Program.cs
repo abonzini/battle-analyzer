@@ -46,6 +46,7 @@ namespace BattleAnalyzer
                 if (battle_data_lines[1].Length == 0 || battle_data_lines[1][0] != '-') // Defines new event, lines with - are part of previous event
                 {
                     current_attack.clear();
+                    last_line = battle_data_lines[1]; // Registers what was the last command happened (attack, switch?)
                 }
                 switch (battle_data_lines[1]) // Check the second value (command, always?) and do different stuff for each
                 {
@@ -294,7 +295,6 @@ namespace BattleAnalyzer
                     default: // Many commands (like chat or join) are not analised
                         break;
                 }
-                last_line = battle_data_lines[1]; // Registers what was the last command happened (attack, switch?)
             }
             // At this point, file has been parsed and winner has been decided. Now I need to populate the data.
             /*
