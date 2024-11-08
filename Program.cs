@@ -9,6 +9,7 @@ namespace BattleAnalyzer
         {
             BattleData battle_data = new BattleData(); // info about current battle
             AttackData current_attack = new AttackData(); // Contains info about current event like an attack
+            HazardSetData current_hazard_setting = new HazardSetData(); // Contains info about potential hazard setting
             TurnCounter turn_state_machine = new TurnCounter(battle_data); // Holds info about ongoing turn and keeps the pace (and logs)
 
             // Start Battle, open file
@@ -46,6 +47,7 @@ namespace BattleAnalyzer
                 if (battle_data_lines[1].Length == 0 || battle_data_lines[1][0] != '-') // Defines new event, lines with - are part of previous event
                 {
                     current_attack.clear();
+                    current_hazard_setting.clear();
                     last_line = battle_data_lines[1]; // Registers what was the last command happened (attack, switch?)
                 }
                 switch (battle_data_lines[1]) // Check the second value (command, always?) and do different stuff for each
@@ -89,6 +91,32 @@ namespace BattleAnalyzer
                         // Notify all parts
                         PrintUtilities.printString($"\t-{battle_data.getTeam(current_attack.player_user)}'s {current_attack.user} used {current_attack.attack_name}\n", ConsoleColor.White, ConsoleColor.Black);
                         turn_state_machine.Move(); // Notify of move
+                        // If move causd hazard...
+                        switch(current_attack.attack_name)
+                        {
+                            case "Toxic Spikes":
+                                current_hazard_setting.hazard_name = current_attack.attack_name;
+                                current_hazard_setting.user = current_attack.user;
+                                current_hazard_setting.cause = current_attack.attack_name;
+                                current_hazard_setting.player_user = current_attack.player_user;
+                                break;
+                            case "Stealth Rock":
+                            case "Stone Axe":
+                                current_hazard_setting.hazard_name = "Stealth Rock";
+                                current_hazard_setting.user = current_attack.user;
+                                current_hazard_setting.cause = current_attack.attack_name;
+                                current_hazard_setting.player_user = current_attack.player_user;
+                                break;
+                            case "Spikes":
+                            case "Ceaseless Edge":
+                                current_hazard_setting.hazard_name = "Spikes";
+                                current_hazard_setting.user = current_attack.user;
+                                current_hazard_setting.cause = current_attack.attack_name;
+                                current_hazard_setting.player_user = current_attack.player_user;
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     case "replace": // For zoroark things
                         // Very similar to change form but only current in-turn record is changed (all we can do)
@@ -111,21 +139,30 @@ namespace BattleAnalyzer
                         turn_state_machine.ChangeMonName(current_team.TeamNumber, old_form_name, current_poke);
                         PrintUtilities.printString($"{old_form_name} became {current_poke}\n", ConsoleColor.White, ConsoleColor.Black);
                         break;
+                    case "-activate":
+                        // Activation can cause hazard (toxic debris???)
+                        string[] activate_data = battle_data_lines[2].Split(':');
+                        current_team = battle_data.getTeam(activate_data[0]);
+                        current_poke_nickname = activate_data[1].Trim(' '); // Remove spaces, now i got the mon
+                        current_poke = current_team.GetMonByNickname(current_poke_nickname);
+
+                        if (battle_data_lines[3].Contains("Toxic Debris")) // This'll cause tspikes
+                        {
+                            current_hazard_setting.user = current_poke;
+                            current_hazard_setting.cause = "Toxic Debris";
+                            current_hazard_setting.hazard_name = "Toxic Spikes";
+                            current_hazard_setting.player_user = current_team.TeamNumber;
+                        }
+                        break;
                     case "-sidestart":
                         // Starting of entry hazard mostly from a move
                         string[] side_start_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(side_start_data[0]);
-                        string hazard_name = "";
-                        if (battle_data_lines[3].Contains("Stealth Rock")) hazard_name = "Stealth Rock";
-                        else if (battle_data_lines[3].Contains("Toxic Spikes")) hazard_name = "Toxic Spikes";
-                        else if (battle_data_lines[3].Contains("Spikes")) hazard_name = "Spikes";
-                        if(hazard_name != "") // Hazard was set, they are set by player who used the move unless its like consecuence of debris
+                        // Team can't self inflict hazard, check if hazard available then!
+                        if(current_team.TeamNumber != current_hazard_setting.player_user && current_hazard_setting.hazard_name != "")
                         {
-                            if(!current_team.HasMon(current_attack.user)) // Can't self inflict status
-                            {
-                                current_team.DamagingFieldEffectAndLastUser[hazard_name] = current_attack.user; // Now there's a field effect that may grant kills
-                                PrintUtilities.printString($"\t\t-{current_attack.user} set {hazard_name} on {current_team.Name}'s side\n", ConsoleColor.White, ConsoleColor.Black);
-                            }
+                            current_team.DamagingFieldEffectAndLastUser[current_hazard_setting.hazard_name] = current_hazard_setting.user; // Now there's a field effect that may grant kills
+                            PrintUtilities.printString($"\t\t-{current_hazard_setting} on {current_team.Name}'s side\n", ConsoleColor.White, ConsoleColor.Black);
                         }
                         break;
                     case "-weather":

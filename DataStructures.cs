@@ -26,6 +26,27 @@ namespace BattleAnalyzer
             return $"P{player_user}'s {user} used {attack_name}";
         }
     }
+
+    public class HazardSetData
+    {
+        public void clear()
+        {
+            hazard_name = "";
+            user = "";
+            cause = "";
+            player_user = 0;
+        }
+        
+        public string hazard_name = "";
+        public string user = "";
+        public string cause = "";
+        public int player_user = 0;
+
+        public override string ToString()
+        {
+            return $"P{player_user}'s {user}'s {cause} caused {hazard_name}";
+        }
+    }
     public class BattleData
     {
         TeamData[] player_data = new TeamData[2]; // Both players
