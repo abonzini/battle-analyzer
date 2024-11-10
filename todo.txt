@@ -1,5 +1,0 @@
-- BUG: Improve nickname finding. Right now the system collapses if 2 or more mons have same nickname. Instead, check actions only from current mon. Correct species will be indicated on the switch.
-- BUG: System doesn't track if mon of same species applies status. Fix to allow playoff interactions
-- ADD: Future sight not integrated yet, system won't attribute future sight kills 
-- ADD: Perish song untracked
-- ADD: Zoroark shenanigans

@@ -145,13 +145,33 @@ namespace BattleAnalyzer
                         current_team = battle_data.getTeam(activate_data[0]);
                         current_poke_nickname = activate_data[1].Trim(' '); // Remove spaces, now i got the mon
                         current_poke = current_team.GetMonByNickname(current_poke_nickname);
+                        string activate_effect = battle_data_lines[3].Split(':').Last().Trim(' '); // Get name of effect
 
-                        if (battle_data_lines[3].Contains("Toxic Debris")) // This'll cause tspikes
+                        switch (activate_effect)
                         {
-                            current_hazard_setting.user = current_poke;
-                            current_hazard_setting.cause = "Toxic Debris";
-                            current_hazard_setting.hazard_name = "Toxic Spikes";
-                            current_hazard_setting.player_user = current_team.TeamNumber;
+                            case "Toxic Debris": // May create a hazard, causing tspike on opp field
+                                current_hazard_setting.user = current_poke;
+                                current_hazard_setting.cause = "Toxic Debris";
+                                current_hazard_setting.hazard_name = "Toxic Spikes";
+                                current_hazard_setting.player_user = current_team.TeamNumber;
+                                break;
+                            case "confusion": // Oh crap this may've been caused by an attack?! in that case current poke is the victim and depends on attack
+                                switch (current_attack.attack_name) // Todo shadow puppeteer
+                                {
+                                    case "Hurricane": // Attacks that cause cnf
+                                    case "Swagger":
+                                    case "Confuse Ray":
+                                        if(current_attack.player_user !=  current_team.TeamNumber) // Can only caused by opp, not myself
+                                        {
+                                            current_team.PokemonInTeam[current_poke].DamagingEventsAndUser["confusion"] = current_attack.user; // Someone used attack
+                                        }
+                                        break;
+                                    default: // These won't be considered then 
+                                        break;
+                                }
+                                break;
+                            default:
+                                break;
                         }
                         break;
                     case "-sidestart":
@@ -255,6 +275,10 @@ namespace BattleAnalyzer
                                 current_team.DamagingFieldEffectAndLastUser[start_effect] = current_poke; // Now there's a field effect that may grant kills
                                 PrintUtilities.printString($"\t\t-{current_poke} scheduled a {start_effect} against {current_team.Name}\n", ConsoleColor.White, ConsoleColor.Black);
                                 break;
+                            case "Leech Seed":
+                                // This is caused by an attack hopefully and so we track the user
+                                current_team.PokemonInTeam[current_poke].DamagingEventsAndUser[start_effect] = current_attack.user;
+                                break;
                             default:
                                 break;
                         }
@@ -309,24 +333,38 @@ namespace BattleAnalyzer
                             {
                                 damage_source = new AttackData();
                                 damage_source.attack_name = battle_data_lines[4].Replace("[from] ", "");
+                                damage_source.attack_name = damage_source.attack_name.Split(":").Last().Trim(' '); //If there's ability: or item:, remove it too
 
-                                // The source needs to be tracked, and it's probably a case of status or field
-                                if (current_team.DamagingFieldEffectAndLastUser.ContainsKey(damage_source.attack_name)) // Found the field effect that caused it
+                                switch (damage_source.attack_name) // Track damage effects and their source...
                                 {
-                                    damage_source.user = current_team.DamagingFieldEffectAndLastUser[damage_source.attack_name];
-                                    damage_source.player_user = (current_team.TeamNumber == 1) ? 2 : 1; // The cause is ALWAYS the other player, confirmed
-                                }
-                                else if(current_team.HasMon(dead_poke) && current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser.ContainsKey(damage_source.attack_name)) // Find if pokemon is there and if the casue of death is a status caused by someone
-                                {
-                                    // Means i found the culprit
-                                    damage_source.user = current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser[damage_source.attack_name];
-                                    damage_source.player_user = (current_team.TeamNumber == 1) ? 2 : 1; // The cause is ALWAYS the other player, confirmed
-                                }
-                                else
-                                {
-                                    // Not sure what else could have killed, so i skip this death
-                                    PrintUtilities.printString($"\t\t-{dead_poke} died of mysterious circumstances: {damage_source.attack_name}\n", ConsoleColor.Red, ConsoleColor.Black);
-                                    break;
+                                    case "Leech Seed":
+                                        // Need to find who used it
+                                        damage_source.user = current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser[damage_source.attack_name];
+                                        // And obviously will be the other player!
+                                        damage_source.player_user = battle_data.getOppositeTeam(current_team.TeamNumber).TeamNumber;
+                                        break;
+                                    case "confusion": // Simple case but I do need to check if it wasn't self inflicted
+                                        if (current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser.ContainsKey(damage_source.attack_name))
+                                        {
+                                            damage_source.user = current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser[damage_source.attack_name];
+                                            damage_source.player_user = battle_data.getOppositeTeam(current_team.TeamNumber).TeamNumber;
+                                        }
+                                        break;
+                                    case "Rocky Helmet":
+                                    case "Rough Skin":
+                                    case "Iron Barbs":
+                                    case "Aftermath":
+                                        if (battle_data_lines.Length > 5 && battle_data_lines[5].Contains("[of]")) // The game gives us data of who did this
+                                        {
+                                            battle_data_lines[5] = battle_data_lines[5].Replace("[of] ", ""); // Remove of
+                                            current_team = battle_data.getTeam(battle_data_lines[5].Split(':')[0]);
+                                            damage_source.player_user = current_team.TeamNumber; // Get owner of killer
+                                            damage_source.user = current_team.GetMonByNickname(battle_data_lines[5].Split(':')[1].Trim(' ')); // Get mon that killed with thing
+                                        }
+                                        break;
+                                    default:
+                                        PrintUtilities.printString($"\t\t-{dead_poke} died of mysterious circumstances: {damage_source.attack_name}\n", ConsoleColor.Red, ConsoleColor.Black);
+                                        break;
                                 }
                             }
                             else
