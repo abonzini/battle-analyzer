@@ -81,6 +81,14 @@ namespace BattleAnalyzer
             }
             throw new Exception("Requested nonexistant team name!");
         }
+        public TeamData getOppositeTeam(int team_number) // Given a number, I return the other one
+        {
+            foreach(TeamData ply in player_data)
+            {
+                if (ply.TeamNumber != team_number) return ply;
+            }
+            throw new Exception("Problem requesting opposite team!");
+        }
     }
     public class TeamData
     {

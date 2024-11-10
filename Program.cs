@@ -230,7 +230,7 @@ namespace BattleAnalyzer
                         }
                         break;
                     case "-start":
-                        // mon got status
+                        // mon got status, salt cure? what
                         string[] start_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(start_data[0]);
                         current_poke_nickname = start_data[1].Trim(' ');
@@ -246,13 +246,50 @@ namespace BattleAnalyzer
                             // Just ignore these for now
                         }
 
-                        if(start_effect != "")
+                        switch (start_effect)
                         {
-                            if (!current_team.HasMon(current_attack.user)) // BUT ONLY IF NOT SELF INFLICTED
-                            {
-                                current_team.PokemonInTeam[current_poke].DamagingEventsAndUser[start_effect] = current_attack.user;
-                                PrintUtilities.printString($"\t\t-{current_attack.user} set {start_effect} on {current_team.PokemonInTeam[current_poke].Name}\n", ConsoleColor.White, ConsoleColor.Black);
-                            }
+                            case "Future Sight":
+                            case "Doom Desire":
+                                // These attacks set a "Hazard" on the opp's field, similar to sidestart
+                                current_team = battle_data.getOppositeTeam(current_team.TeamNumber); // Set hazard on the opponent's
+                                current_team.DamagingFieldEffectAndLastUser[start_effect] = current_poke; // Now there's a field effect that may grant kills
+                                PrintUtilities.printString($"\t\t-{current_poke} scheduled a {start_effect} against {current_team.Name}\n", ConsoleColor.White, ConsoleColor.Black);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case "-end":
+                        // A status (???) ended, future sight ended
+                        string[] end_data = battle_data_lines[2].Split(':');
+                        // Who did it end for
+                        current_team = battle_data.getTeam(end_data[0]);
+                        current_poke_nickname = end_data[1].Trim(' ');
+                        current_poke = current_team.GetMonByNickname(current_poke_nickname);
+                        string end_effect = "";
+
+                        if (battle_data_lines[3].Contains("move: ")) // move caused this
+                        {
+                            end_effect = battle_data_lines[3].Replace("move: ", "");
+                        }
+                        else
+                        {
+                            // Just ignore these for now
+                        }
+
+                        switch (end_effect)
+                        {
+                            case "Future Sight":
+                            case "Doom Desire":
+                                // If these finished, it means the move ended as an attack, will populate attack data and someone will check if someone faint
+                                // Important to track who caused the move in the first place
+                                current_attack.attack_name = end_effect;
+                                current_attack.user = current_team.DamagingFieldEffectAndLastUser[end_effect]; // Get caster
+                                current_attack.player_user = battle_data.getOppositeTeam(current_team.TeamNumber).TeamNumber;
+                                PrintUtilities.printString($"\t-{current_attack.user}'s {end_effect} happened\n", ConsoleColor.White, ConsoleColor.Black);
+                                break;
+                            default:
+                                break;
                         }
                         break;
                     case "-damage": // Part of the event, mon received damage and possibly fainted
