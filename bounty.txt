@@ -4,3 +4,4 @@
 - Perish song kill
 - Better Zoroark Tracking
 - Trick/fling induced status/barb kill
+- Special effect kill, including curse and salt cure
