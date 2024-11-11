@@ -344,6 +344,8 @@ namespace BattleAnalyzer
                                         damage_source.player_user = battle_data.getOppositeTeam(current_team.TeamNumber).TeamNumber;
                                         break;
                                     case "confusion": // Simple case but I do need to check if it wasn't self inflicted
+                                    case "psn": // Have to track status kill too! These work in the same way
+                                    case "brn":
                                         if (current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser.ContainsKey(damage_source.attack_name))
                                         {
                                             damage_source.user = current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser[damage_source.attack_name];

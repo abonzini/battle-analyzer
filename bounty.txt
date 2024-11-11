@@ -3,4 +3,5 @@
 - Destiny bond kill
 - Perish song kill
 - Better Zoroark Tracking
-- Trick/fling induced status/barb kill
+- Trick/fling induced status/barb/sludge/lorb kill
+- Restore sandstorm/hail kill damage
