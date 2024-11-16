@@ -365,6 +365,9 @@ namespace BattleAnalyzer
                                         }
                                         break;
                                     default:
+                                        // Mystery circumstances are basially the pokemon killing itself
+                                        damage_source.player_user = current_team.TeamNumber;
+                                        damage_source.user = dead_poke;
                                         PrintUtilities.printString($"\t\t-{dead_poke} died of mysterious circumstances: {damage_source.attack_name}\n", ConsoleColor.Red, ConsoleColor.Black);
                                         break;
                                 }
