@@ -364,6 +364,11 @@ namespace BattleAnalyzer
                                             damage_source.user = current_team.GetMonByNickname(battle_data_lines[5].Split(':')[1].Trim(' ')); // Get mon that killed with thing
                                         }
                                         break;
+                                    case "Stealth Rock":
+                                    case "Spikes":
+                                        damage_source.user = current_team.DamagingFieldEffectAndLastUser[damage_source.attack_name];
+                                        damage_source.player_user = battle_data.getOppositeTeam(current_team.TeamNumber).TeamNumber;
+                                        break;
                                     default:
                                         // Mystery circumstances are basially the pokemon killing itself
                                         damage_source.player_user = current_team.TeamNumber;
