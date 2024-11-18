@@ -2,7 +2,8 @@
 - Puppeteer induced confusion kill
 - Destiny bond kill
 - Perish song kill
-- Better Zoroark Tracking
+- Zoroark doing more stuff
 - Trick/fling induced status/barb/sludge/lorb kill
-- Special effect kill, including curse and salt cure
-- Restore sandstorm/hail kill damage
+- Special "non-volatile" effect kill, including curse and salt cure
+- Sandstorm/hail kill damage
+- Burning bulwark/baneful bunker induced status kill
