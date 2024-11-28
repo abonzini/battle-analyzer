@@ -7,3 +7,4 @@
 - Special "non-volatile" effect kill, including curse and salt cure
 - Sandstorm/hail kill damage
 - Burning bulwark/baneful bunker induced status kill
+- Synchronize status kill
