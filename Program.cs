@@ -174,6 +174,27 @@ namespace BattleAnalyzer
                                 break;
                         }
                         break;
+                    case "-item":
+                        string[] item_data = battle_data_lines[2].Split(':');
+                        current_team = battle_data.getTeam(item_data[0]);
+                        current_poke_nickname = item_data[1].Trim(' '); // Remove spaces, now i got the mon
+                        current_poke = current_team.GetMonByNickname(current_poke_nickname);
+                        // If item was excenged by the enemy, may add a situation (if self-trick, won't trigger)
+                        if (current_attack.player_user != current_team.TeamNumber)
+                        { // Enemy caused it!
+                            switch (current_attack.attack_name)
+                            {
+                                case "Trick":
+                                case "Switcheroo":
+                                    // Yes this caused the item so... fetch item name that was tricked
+                                    current_team.PokemonInTeam[current_poke].DamagingEventsAndUser[battle_data_lines[3]] = current_attack.user;
+                                    // Add item as an effect to mon (even if it doesn't damage idk)
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        break;
                     case "-sidestart":
                         // Starting of entry hazard mostly from a move
                         string[] side_start_data = battle_data_lines[2].Split(':');
@@ -230,6 +251,24 @@ namespace BattleAnalyzer
                         if(battle_data_lines.Length > 4 && battle_data_lines[4].Contains("item"))
                         {
                             // Cant deal with this right now... Just ignore the status
+                        }
+                        else if(battle_data_lines.Length > 4 && battle_data_lines[4].Contains("ability"))
+                        {
+                            // Caused by ability!
+                            switch (battle_data_lines[4].Split(":").Last().Trim(' ')) // Get ability name
+                            {
+                                case "Flame Body": // Ok these ones are caused by the enemy so it's ok
+                                case "Effect Spore":
+                                case "Poison Point":
+                                case "Poison Touch":
+                                case "Synchronize":
+                                case "Toxic Chain":
+                                    current_team.PokemonInTeam[current_poke].DamagingEventsAndUser[status] = battle_data_lines[5].Split(":").Last().Trim(' '); // Get poke from description string
+                                    PrintUtilities.printString($"\t\t-{current_team.PokemonInTeam[current_poke].Name} got {status} by {battle_data_lines[5].Split(":").Last().Trim(' ')}'s {battle_data_lines[4].Split(":").Last().Trim(' ')}\n", ConsoleColor.White, ConsoleColor.Black);
+                                    break;
+                                default: // Ignore the rest
+                                    break;
+                            }
                         }
                         else if(last_line == "switch" && status == "psn") // Status on switch means hazards, tspikes specifically
                         {
@@ -337,21 +376,6 @@ namespace BattleAnalyzer
 
                                 switch (damage_source.attack_name) // Track damage effects and their source...
                                 {
-                                    case "Leech Seed":
-                                        // Need to find who used it
-                                        damage_source.user = current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser[damage_source.attack_name];
-                                        // And obviously will be the other player!
-                                        damage_source.player_user = battle_data.getOppositeTeam(current_team.TeamNumber).TeamNumber;
-                                        break;
-                                    case "confusion": // Simple case but I do need to check if it wasn't self inflicted
-                                    case "psn": // Have to track status kill too! These work in the same way
-                                    case "brn":
-                                        if (current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser.ContainsKey(damage_source.attack_name))
-                                        {
-                                            damage_source.user = current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser[damage_source.attack_name];
-                                            damage_source.player_user = battle_data.getOppositeTeam(current_team.TeamNumber).TeamNumber;
-                                        }
-                                        break;
                                     case "Rocky Helmet":
                                     case "Rough Skin":
                                     case "Iron Barbs":
@@ -370,10 +394,25 @@ namespace BattleAnalyzer
                                         damage_source.player_user = battle_data.getOppositeTeam(current_team.TeamNumber).TeamNumber;
                                         break;
                                     default:
-                                        // Mystery circumstances are basially the pokemon killing itself
-                                        damage_source.player_user = current_team.TeamNumber;
-                                        damage_source.user = dead_poke;
-                                        PrintUtilities.printString($"\t\t-{dead_poke} died of mysterious circumstances: {damage_source.attack_name}\n", ConsoleColor.Red, ConsoleColor.Black);
+                                        // The standard case is that the effect may be an ongoing field effect or an individual mon effect os just look there
+                                        if(current_team.DamagingFieldEffectAndLastUser.ContainsKey(damage_source.attack_name))
+                                        { // Field caused it
+                                            damage_source.user = current_team.DamagingFieldEffectAndLastUser[damage_source.attack_name];
+                                            damage_source.player_user = battle_data.getOppositeTeam(current_team.TeamNumber).TeamNumber;
+                                        }
+                                        else if(current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser.ContainsKey(damage_source.attack_name))
+                                        {
+                                            // Ok tracked it to an individual mon effect (say, status)
+                                            damage_source.user = current_team.PokemonInTeam[dead_poke].DamagingEventsAndUser[damage_source.attack_name];
+                                            damage_source.player_user = battle_data.getOppositeTeam(current_team.TeamNumber).TeamNumber;
+                                        }
+                                        else
+                                        { 
+                                            // Mystery circumstances are basially the pokemon killing itself
+                                            damage_source.player_user = current_team.TeamNumber;
+                                            damage_source.user = dead_poke;
+                                            PrintUtilities.printString($"\t\t-{dead_poke} died of mysterious circumstances: {damage_source.attack_name}\n", ConsoleColor.Red, ConsoleColor.Black);
+                                        }
                                         break;
                                 }
                             }
