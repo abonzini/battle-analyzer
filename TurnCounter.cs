@@ -63,6 +63,11 @@ namespace BattleAnalyzer
         BattleData battle_data;
         InternalData internal_data = new InternalData(); // For extra info to pass to state machine
 
+        public string GetPlayersMon(int player_number)
+        {
+            return current_mons[player_number - 1].name;
+        }
+
         public TurnCounter(BattleData data) // Keeps internal picture of mons and teams
         {
             state = TurnState.TURN_0;

@@ -30,7 +30,6 @@ namespace BattleAnalyzer
 
             TeamData current_team; // Which team i'm parsing in current line (AUX var)
             string current_poke; // Which poke i'm parsing (AUX var)
-            string current_poke_nickname; // The nickname of the switched-in mon
 
             string last_line = "";
             foreach (string line in all_lines)
@@ -64,19 +63,14 @@ namespace BattleAnalyzer
                         current_team = battle_data.getTeam(battle_data_lines[2]);
                         string[] pokemon_to_add = battle_data_lines[3].Split(','); // Separate mon from gender
                         PokemonData mon_to_add = new PokemonData(pokemon_to_add[0]);
-                        if (pokemon_to_add[0].Contains("-*")) // Unknown forms pre-battle
-                        {
-                            mon_to_add.DiscoveredName = false;
-                        }
                         current_team.PokemonInTeam.Add(mon_to_add.Name, mon_to_add);
                         break;
                     case "drag":
                     case "switch": // Pokemon has been switched in, the older one in the turn is marked as old and new one is the main
                         string[] switch_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(switch_data[0]);
-                        current_poke_nickname = switch_data[1].Trim(' '); // Remove spaces, now i got the mon
                         current_poke = battle_data_lines[3].Split(',')[0];
-                        current_team.SetNickname(current_poke, current_poke_nickname);
+                        current_team.VerifyMon(current_poke);
                         turn_state_machine.SwitchIn(current_team.TeamNumber, current_poke);
                         PrintUtilities.printString($"{current_team}'s {current_poke} switch in\n", ConsoleColor.White, ConsoleColor.Black);
                         break;
@@ -89,8 +83,7 @@ namespace BattleAnalyzer
                         string[] move_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(move_data[0]);
                         current_attack.player_user = current_team.TeamNumber;
-                        current_poke_nickname = move_data[1].Trim(' '); // Remove spaces, now i got the mon
-                        current_attack.user = current_team.GetMonByNickname(current_poke_nickname);
+                        current_attack.user = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
                         // Notify all parts
                         PrintUtilities.printString($"\t-{battle_data.getTeam(current_attack.player_user)}'s {current_attack.user} used {current_attack.attack_name}\n", ConsoleColor.White, ConsoleColor.Black);
                         turn_state_machine.Move(); // Notify of move
@@ -122,11 +115,11 @@ namespace BattleAnalyzer
                         }
                         break;
                     case "replace": // For zoroark things
-                        // Very similar to change form but only current in-turn record is changed (all we can do)
+                        // Very similar to change form but only current in-turn record is changed (all we can do FOR NOW)
                         string[] replace_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(replace_data[0]);
-                        current_poke_nickname = replace_data[1].Trim(' '); // Remove spaces, now i got the mon
                         current_poke = battle_data_lines[3].Split(',')[0];
+                        current_team.VerifyMon(current_poke); // Just in case some wacky Zoroark-* exists in the future or sth
                         string prev_mon_illusion = turn_state_machine.GetCurrentMon(current_team.TeamNumber); // This mon needs to be replaced in turn counter
                         turn_state_machine.ChangeMonName(current_team.TeamNumber, prev_mon_illusion, current_poke);
                         PrintUtilities.printString($"{prev_mon_illusion} was {current_poke}!\n", ConsoleColor.White, ConsoleColor.Black);
@@ -135,19 +128,18 @@ namespace BattleAnalyzer
                         //|detailschange|p2a: Mega-Swampass|Swampert-Mega
                         string[] form_change_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(form_change_data[0]);
-                        current_poke_nickname = form_change_data[1].Trim(' '); // Remove spaces, now i got the mon
                         current_poke = battle_data_lines[3].Split(',')[0];
+                        string ex_mon = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
                         // Got all info Í need, update
-                        string old_form_name = current_team.ChangeMonForm(current_poke_nickname, current_poke); // Notify all elements of change!
-                        turn_state_machine.ChangeMonName(current_team.TeamNumber, old_form_name, current_poke);
-                        PrintUtilities.printString($"{old_form_name} became {current_poke}\n", ConsoleColor.White, ConsoleColor.Black);
+                        current_team.ChangeMonForm(ex_mon, current_poke); // Notify all elements of change!
+                        turn_state_machine.ChangeMonName(current_team.TeamNumber, ex_mon, current_poke);
+                        PrintUtilities.printString($"{ex_mon} became {current_poke}\n", ConsoleColor.White, ConsoleColor.Black);
                         break;
                     case "-activate":
                         // Activation can cause hazard (toxic debris???)
                         string[] activate_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(activate_data[0]);
-                        current_poke_nickname = activate_data[1].Trim(' '); // Remove spaces, now i got the mon
-                        current_poke = current_team.GetMonByNickname(current_poke_nickname);
+                        current_poke = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
                         string activate_effect = battle_data_lines[3].Split(':').Last().Trim(' '); // Get name of effect
 
                         switch (activate_effect)
@@ -180,9 +172,8 @@ namespace BattleAnalyzer
                     case "-item":
                         string[] item_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(item_data[0]);
-                        current_poke_nickname = item_data[1].Trim(' '); // Remove spaces, now i got the mon
-                        current_poke = current_team.GetMonByNickname(current_poke_nickname);
-                        // If item was excenged by the enemy, may add a situation (if self-trick, won't trigger)
+                        current_poke = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
+                        // If item was exchanged by the enemy, may add a situation (if self-trick, won't trigger)
                         if (current_attack.player_user != current_team.TeamNumber)
                         { // Enemy caused it!
                             switch (current_attack.attack_name)
@@ -226,29 +217,23 @@ namespace BattleAnalyzer
                             weather_setter = battle_data_lines[4].Replace("[of] ", ""); // Remove this
                             weather_start_data = weather_setter.Split(':');
                             current_team = battle_data.getTeam(weather_start_data[0]);
-                            weather_setter = weather_start_data[1].Trim(' ');
-                            weather_setter = current_team.GetMonByNickname(weather_setter);
+                            weather_setter = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
+                            current_team = battle_data.getOppositeTeam(current_team.TeamNumber); // But the victim is the other player
                         }
                         else // Weather set manually
                         {
                             weather_setter = current_attack.user; // Set by corresponding mon then
+                            current_team = battle_data.getOppositeTeam(current_attack.player_user); // But the victim is the other player
                         }
-                        for (int i = 1; i <= 2; i++) // Add only on the side that can actually get killed by weather (can't self kill)
-                        {
-                            current_team = battle_data.getTeam(i);
-                            if (!current_team.HasMon(weather_setter))
-                            {
-                                current_team.DamagingFieldEffectAndLastUser[weather] = weather_setter;
-                            }
-                        }
+                        
+                        current_team.DamagingFieldEffectAndLastUser[weather] = weather_setter;
                         PrintUtilities.printString($"\t\t-{weather_setter} set {weather}\n", ConsoleColor.White, ConsoleColor.Black);
                         break;
                     case "-status":
                         // mon got status
                         string[] status_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(status_data[0]);
-                        current_poke_nickname = status_data[1].Trim(' ');
-                        current_poke = current_team.GetMonByNickname(current_poke_nickname);
+                        current_poke = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
                         string status = (battle_data_lines[3]=="tox") ? "psn" : battle_data_lines[3]; // get status bot tox=psn...
                         
                         if(battle_data_lines.Length > 4 && battle_data_lines[4].Contains("item"))
@@ -295,8 +280,7 @@ namespace BattleAnalyzer
                         // mon got status, salt cure? what
                         string[] start_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(start_data[0]);
-                        current_poke_nickname = start_data[1].Trim(' ');
-                        current_poke = current_team.GetMonByNickname(current_poke_nickname);
+                        current_poke = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
                         string start_effect = "";
 
                         if (battle_data_lines[3].Contains("move: ")) // move caused this
@@ -330,8 +314,7 @@ namespace BattleAnalyzer
                         string[] end_data = battle_data_lines[2].Split(':');
                         // Who did it end for
                         current_team = battle_data.getTeam(end_data[0]);
-                        current_poke_nickname = end_data[1].Trim(' ');
-                        current_poke = current_team.GetMonByNickname(current_poke_nickname);
+                        current_poke = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
                         string end_effect = "";
 
                         if (battle_data_lines[3].Contains("move: ")) // move caused this
@@ -366,8 +349,7 @@ namespace BattleAnalyzer
                             string[] fainted_mon_data = battle_data_lines[2].Split(':');
                             current_team = battle_data.getTeam(fainted_mon_data[0]);
                             int dead_owner = current_team.TeamNumber;
-                            current_poke_nickname = fainted_mon_data[1].Trim(' '); // Remove spaces, now i got the mon
-                            string dead_poke = current_poke = current_team.GetMonByNickname(current_poke_nickname);
+                            string dead_poke = current_poke = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
                             
                             // Next, we get the source/killer
                             AttackData damage_source;
@@ -388,7 +370,7 @@ namespace BattleAnalyzer
                                             battle_data_lines[5] = battle_data_lines[5].Replace("[of] ", ""); // Remove of
                                             current_team = battle_data.getTeam(battle_data_lines[5].Split(':')[0]);
                                             damage_source.player_user = current_team.TeamNumber; // Get owner of killer
-                                            damage_source.user = current_team.GetMonByNickname(battle_data_lines[5].Split(':')[1].Trim(' ')); // Get mon that killed with thing
+                                            damage_source.user = turn_state_machine.GetPlayersMon(battle_data.getOppositeTeam(current_team.TeamNumber).TeamNumber); // Get mon that killed with thing (its the opposite i guess
                                         }
                                         break;
                                     case "Stealth Rock":
@@ -444,8 +426,7 @@ namespace BattleAnalyzer
                     case "faint": // mon fainted either from event (attack) or recoil (or status?)
                         string[] faint_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(faint_data[0]); // Fainted mon and its owner
-                        current_poke_nickname = faint_data[1].Trim(' ');
-                        current_poke = current_team.GetMonByNickname(current_poke_nickname);
+                        current_poke = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
                         current_team.PokemonInTeam[current_poke].NumberOfDeaths++;
                         PrintUtilities.printString($"\t-{current_poke} died ({current_team.PokemonInTeam[current_poke].NumberOfDeaths} TOTAL DEATHS)\n\n", ConsoleColor.Red, ConsoleColor.Black);
                         turn_state_machine.Faint(current_team.TeamNumber, current_poke);

@@ -98,7 +98,7 @@ namespace BattleAnalyzer
         public Dictionary<string, PokemonData> PokemonInTeam = new Dictionary<string, PokemonData>();
         public Dictionary<string, string> DamagingFieldEffectAndLastUser = new Dictionary<string, string>();
         static bool first_urshifu = true; // Horrible patch because urshifu is an asshole
-        public void SetNickname(string mon, string nickname)
+        public void VerifyMon(string mon)
         {
             if(!PokemonInTeam.ContainsKey(mon)) // Not found?! then it means that it's a mon with -* (unknown form??)
             {
@@ -118,24 +118,10 @@ namespace BattleAnalyzer
                 }
                 if (!found_unknown) throw new Exception("Mon not in team!");
             }
-            PokemonInTeam[mon].Nickname = nickname;
         }
-        public string GetMonByNickname(string nickname)
-        {
-            foreach(PokemonData mon in PokemonInTeam.Values)
-            {
-                if(mon.Nickname == nickname)
-                {
-                    return mon.Name;
-                }
-            }
-            throw new Exception("Fetching a nickname that doesn't exist!");
-        }
-        public string ChangeMonForm(string nickname, string form) // Changes the form name (e.g. mega). Returns old name of what changed
+        public void ChangeMonForm(string old_mon, string form) // Changes the form name (e.g. mega). Returns old name of what changed
         {
             PokemonData new_mon = new PokemonData(form);
-            new_mon.Nickname = nickname;
-            string old_mon = GetMonByNickname(nickname); // Get the old entry
             PokemonData old_mon_data = PokemonInTeam[old_mon];
             new_mon.NumberOfTurns = old_mon_data.NumberOfTurns; // Copy values
             new_mon.NumberOfDeaths = old_mon_data.NumberOfDeaths;
@@ -145,7 +131,6 @@ namespace BattleAnalyzer
             // Replace
             PokemonInTeam.Remove(old_mon);
             PokemonInTeam.Add(form, new_mon);
-            return old_mon;
         }
         public bool HasMon(string mon)
         {
@@ -162,11 +147,13 @@ namespace BattleAnalyzer
         public PokemonData(string name)
         {
             Name = name;
-            Nickname = name; // By default, the same, if a nickname appears I override
+            if (name.Contains("-*")) // Unknown forms pre-battle
+            {
+                DiscoveredName = false;
+            }
         }
 
         public string Name = "";
-        public string Nickname = "";
         public float NumberOfTurns = 0.0f;
         public int NumberOfKills = 0;
         public int NumberOfDeaths = 0;
@@ -175,7 +162,7 @@ namespace BattleAnalyzer
 
         public override string ToString()
         {
-            return $"{Name} {NumberOfTurns:0.0}T {NumberOfKills}K {NumberOfDeaths}D ({Nickname})";
+            return $"{Name} {NumberOfTurns:0.0}T {NumberOfKills}K {NumberOfDeaths}D";
         }
     }
 }
