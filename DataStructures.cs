@@ -141,6 +141,7 @@ namespace BattleAnalyzer
             new_mon.NumberOfDeaths = old_mon_data.NumberOfDeaths;
             new_mon.NumberOfKills = old_mon_data.NumberOfKills;
             new_mon.DiscoveredName = old_mon_data.DiscoveredName;
+            new_mon.DamagingEventsAndUser = old_mon_data.DamagingEventsAndUser;
             // Replace
             PokemonInTeam.Remove(old_mon);
             PokemonInTeam.Add(form, new_mon);

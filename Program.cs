@@ -54,7 +54,10 @@ namespace BattleAnalyzer
                 {
                     case "player": // Gives names of player, and which player is it (p1 or p2)
                         current_team = battle_data.getTeam(battle_data_lines[2]);
-                        current_team.Name = battle_data_lines[3]; // Add name to player
+                        if(current_team.Name == "")
+                        {
+                            current_team.Name = battle_data_lines[3]; // Add name to player
+                        }
                         PrintUtilities.printString($"TEAM {battle_data_lines[2]}: {current_team.Name}\n", ConsoleColor.White, ConsoleColor.Black);
                         break;
                     case "poke": // Defines which poke in which team
