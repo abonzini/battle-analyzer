@@ -9,6 +9,7 @@ namespace BattleAnalyzer
         {
             BattleData battle_data = new BattleData(); // info about current battle
             AttackData current_attack = new AttackData(); // Contains info about current event like an attack
+            AttackData destiny_bond_tracker = new AttackData(); // I hate it. An attack that resolves as an effect without damage, being processed in a main event (not chained with -)
             HazardSetData current_hazard_setting = new HazardSetData(); // Contains info about potential hazard setting
             TurnCounter turn_state_machine = new TurnCounter(battle_data); // Holds info about ongoing turn and keeps the pace (and logs)
 
@@ -164,6 +165,13 @@ namespace BattleAnalyzer
                                     default: // These won't be considered then 
                                         break;
                                 }
+                                break;
+                            case "Destiny Bond":
+                                // Means destiny bond is about to kill something
+                                destiny_bond_tracker.user = current_poke;
+                                destiny_bond_tracker.player_user = current_team.TeamNumber;
+                                destiny_bond_tracker.attack_name = activate_effect;
+                                // Attack data now back to destiny bond but will need to be processed outside of damage because it's an insta-death
                                 break;
                             default:
                                 break;
@@ -427,6 +435,12 @@ namespace BattleAnalyzer
                         string[] faint_data = battle_data_lines[2].Split(':');
                         current_team = battle_data.getTeam(faint_data[0]); // Fainted mon and its owner
                         current_poke = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
+                        if(destiny_bond_tracker.attack_name == "Destiny Bond") // Target destiny bond specifically as it is the only "attack" that doesn't resolve through damage calculation
+                        {
+                            battle_data.getTeam(destiny_bond_tracker.player_user).PokemonInTeam[destiny_bond_tracker.user].NumberOfKills++;
+                            PrintUtilities.printString($"\t-{destiny_bond_tracker.user}'s Destiny Bond killed {current_poke} ({battle_data.getTeam(destiny_bond_tracker.player_user).PokemonInTeam[destiny_bond_tracker.user].NumberOfKills} TOTAL KILLS)\n", ConsoleColor.Red, ConsoleColor.Black);
+                            destiny_bond_tracker.clear();
+                        }
                         current_team.PokemonInTeam[current_poke].NumberOfDeaths++;
                         PrintUtilities.printString($"\t-{current_poke} died ({current_team.PokemonInTeam[current_poke].NumberOfDeaths} TOTAL DEATHS)\n\n", ConsoleColor.Red, ConsoleColor.Black);
                         turn_state_machine.Faint(current_team.TeamNumber, current_poke);

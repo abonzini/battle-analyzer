@@ -1,6 +1,5 @@
 - Spiky shield kill
 - Puppeteer induced confusion kill
-- Destiny bond kill
 - Perish song kill
 - Zoroark doing more stuff
 - Trick/fling induced status (flame orb or toxic orb) kill
@@ -8,3 +7,4 @@
 - Sandstorm/hail kill damage
 - Burning bulwark/baneful bunker induced status kill
 - Sticky barb sticking naturally to mon, and then killing
+- Doubles Battles
