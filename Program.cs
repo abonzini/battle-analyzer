@@ -378,7 +378,7 @@ namespace BattleAnalyzer
                                             battle_data_lines[5] = battle_data_lines[5].Replace("[of] ", ""); // Remove of
                                             current_team = battle_data.getTeam(battle_data_lines[5].Split(':')[0]);
                                             damage_source.player_user = current_team.TeamNumber; // Get owner of killer
-                                            damage_source.user = turn_state_machine.GetPlayersMon(battle_data.getOppositeTeam(current_team.TeamNumber).TeamNumber); // Get mon that killed with thing (its the opposite i guess
+                                            damage_source.user = turn_state_machine.GetPlayersMon(current_team.TeamNumber); // Get mon that killed with thing (its the opposite i guess
                                         }
                                         break;
                                     case "Stealth Rock":
