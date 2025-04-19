@@ -15,15 +15,17 @@ namespace BattleAnalyzer
             Console.Write(str);
             Console.ResetColor();
         }
-        public static void ExportMonData(StreamWriter outputtext, TeamData current_team, int diff, TurnCounter turns)
+        public static string ExportMonData(TeamData current_team, int diff, TurnCounter turns)
         {
-            outputtext.WriteLine($"{current_team.Name},W/L,+/-,TT");
-            outputtext.WriteLine($"RESULT,{((current_team.Winner) ? 'W' : 'L')},{((current_team.Winner) ? diff : -diff)},{turns.turn_number}"); // TODO TURN NUMBERS
-            outputtext.WriteLine("POKEMON,K,D,Turns");
+            string str = "";
+            str += $"{current_team.Name},W/L,+/-,TT\n";
+            str += $"RESULT,{((current_team.Winner) ? 'W' : 'L')},{((current_team.Winner) ? diff : -diff)},{turns.turn_number}\n";
+            str += "POKEMON,K,D,Turns\n";
             foreach (PokemonData pokemon in current_team.PokemonInTeam.Values)
             {
-                outputtext.WriteLine($"{pokemon.Name},{pokemon.NumberOfKills},{pokemon.NumberOfDeaths},{pokemon.NumberOfTurns:0.0}");
+                str += $"{pokemon.Name},{pokemon.NumberOfKills},{pokemon.NumberOfDeaths},{pokemon.NumberOfTurns:0.0}\n";
             }
+            return str;
         }
     }
 }

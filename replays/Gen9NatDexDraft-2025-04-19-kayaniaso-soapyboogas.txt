@@ -1,0 +1,19 @@
+KayaniAso,W/L,+/-,TT
+RESULT,W,3,33
+POKEMON,K,D,Turns
+Araquanid,0,1,7.0
+Mandibuzz,1,0,5.0
+Flareon,2,1,9.0
+Eelektross,2,0,10.0
+Metagross,0,0,0.0
+Iron Valiant,1,1,2.0
+
+soapyboogas,W/L,+/-,TT
+RESULT,L,-3,33
+POKEMON,K,D,Turns
+Lopunny-Mega,0,1,2.0
+Tapu Fini,1,1,8.5
+Gholdengo,0,1,5.0
+Slowking-Galar,1,1,4.0
+Flygon,0,1,8.0
+Glaceon,1,1,5.5
