@@ -1,0 +1,19 @@
+Xman06,W/L,+/-,TT
+RESULT,L,-5,18
+POKEMON,K,D,Turns
+Aerodactyl,0,1,2.5
+Excadrill,0,0,0.0
+Hippowdon,1,1,10.0
+Gyarados-Mega,0,1,3.5
+Magnezone,0,1,1.0
+Lucario,0,0,0.0
+
+Bisharp-Supreme,W/L,+/-,TT
+RESULT,L,-5,18
+POKEMON,K,D,Turns
+Great Tusk,1,0,3.5
+Gallade,0,0,0.0
+Moltres,0,1,9.5
+Deoxys-Defense,0,0,0.0
+Kyurem,1,0,1.5
+Electrode-Hisui,1,0,2.5

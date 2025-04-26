@@ -1,0 +1,19 @@
+Astral Rifk,W/L,+/-,TT
+RESULT,W,2,57
+POKEMON,K,D,Turns
+Scizor-Mega,1,0,11.0
+Pecharunt,4,0,20.5
+Ting-Lu,0,1,6.0
+Alomomola,0,1,8.0
+Kyurem,1,1,3.0
+Raikou,0,1,8.5
+
+profjawbone,W/L,+/-,TT
+RESULT,L,-2,57
+POKEMON,K,D,Turns
+Grafaiai,0,1,2.5
+Iron Jugulis,2,1,10.0
+Swampert-Mega,0,1,5.5
+Terapagos-Terastal,0,1,7.0
+Tapu Bulu,0,1,19.0
+Exeggutor-Alola,2,1,13.0

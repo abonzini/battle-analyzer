@@ -1,0 +1,19 @@
+Artman_Shan,W/L,+/-,TT
+RESULT,W,5,27
+POKEMON,K,D,Turns
+Tapu Koko,1,0,1.5
+Celesteela,5,0,22.5
+Donphan,0,0,0.0
+Accelgor,0,0,0.0
+Infernape,0,0,0.0
+Ribombee,0,1,3.0
+
+TheRealDorge,W/L,+/-,TT
+RESULT,L,-5,27
+POKEMON,K,D,Turns
+Sneasler,0,1,2.5
+Rillaboom,0,1,4.5
+Clefable,1,1,5.0
+Corviknight,0,1,6.5
+Moltres-Galar,0,1,7.0
+Glalie-Mega,0,1,1.5

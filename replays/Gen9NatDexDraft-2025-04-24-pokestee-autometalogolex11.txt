@@ -1,0 +1,19 @@
+PokeStee,W/L,+/-,TT
+RESULT,W,4,25
+POKEMON,K,D,Turns
+Raging Bolt,2,1,5.5
+Blastoise,0,0,2.0
+Tornadus-Therian,0,1,7.0
+Latias,4,0,8.0
+Weavile,0,0,0.0
+Garganacl,0,0,2.5
+
+Autometalogolex11,W/L,+/-,TT
+RESULT,L,-4,25
+POKEMON,K,D,Turns
+Lopunny-Mega,0,1,1.0
+Rotom-Wash,1,1,9.0
+Heatran,0,1,3.0
+Tsareena,0,1,2.0
+Gliscor,1,1,6.5
+Galvantula,0,1,3.5

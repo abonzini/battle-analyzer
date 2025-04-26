@@ -1,0 +1,19 @@
+DrJargo,W/L,+/-,TT
+RESULT,L,-1,32
+POKEMON,K,D,Turns
+Iron Valiant,1,1,3.0
+Manaphy,1,1,10.5
+Zeraora,0,1,3.0
+Nidoqueen,1,1,5.0
+Mr. Rime,1,1,3.5
+Mawile-Mega,1,1,7.0
+
+Bkblastoises,W/L,+/-,TT
+RESULT,W,1,32
+POKEMON,K,D,Turns
+Gouging Fire,0,1,4.5
+Gengar,0,1,1.0
+Lopunny-Mega,5,0,7.0
+Gliscor,0,1,3.0
+Deoxys-Speed,1,1,7.0
+Cradily,0,1,9.5

@@ -1,0 +1,19 @@
+mildish gambino,W/L,+/-,TT
+RESULT,L,-3,64
+POKEMON,K,D,Turns
+Melmetal,0,1,21.0
+Mimikyu-Busted,1,1,7.0
+Noivern,1,1,7.5
+Cinderace,1,1,6.0
+Latias,0,1,10.0
+Gastrodon,0,1,12.5
+
+Virtual Paradise,W/L,+/-,TT
+RESULT,W,3,64
+POKEMON,K,D,Turns
+Tornadus,2,0,7.5
+Swampert,0,1,20.0
+Slowking-Galar,0,1,7.5
+Rillaboom,2,1,19.5
+Roaring Moon,1,0,1.0
+Palafin-Hero,1,0,8.5

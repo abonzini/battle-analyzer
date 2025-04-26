@@ -1,0 +1,19 @@
+bwitt,W/L,+/-,TT
+RESULT,W,2,19
+POKEMON,K,D,Turns
+Darkrai,3,0,3.0
+Rotom-Mow,0,1,3.5
+Landorus-Therian,2,1,7.5
+Fezandipiti,1,0,1.0
+Arcanine-Hisui,0,1,2.0
+Sinistcha,0,1,2.0
+
+PLZXEN,W/L,+/-,TT
+RESULT,L,-2,19
+POKEMON,K,D,Turns
+Spectrier,0,1,1.0
+Celebi,2,1,5.0
+Guzzlord,0,1,3.0
+Goodra,1,1,4.0
+Hawlucha,0,1,2.0
+Tapu Fini,1,1,4.0

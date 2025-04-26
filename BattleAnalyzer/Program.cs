@@ -266,6 +266,7 @@ namespace BattleAnalyzer
                         }
                         else if (battle_data_lines.Length > 4 && battle_data_lines[4].Contains("ability"))
                         {
+                            string abilityOwner = battle_data_lines[5].Replace("[of]","").Split(":").First().Trim(' ');
                             // Caused by ability!
                             switch (battle_data_lines[4].Split(":").Last().Trim(' ')) // Get ability name
                             {
@@ -275,8 +276,9 @@ namespace BattleAnalyzer
                                 case "Poison Touch":
                                 case "Synchronize":
                                 case "Toxic Chain":
-                                    current_team.PokemonInTeam[current_poke].DamagingEventsAndUser[status] = battle_data_lines[5].Split(":").Last().Trim(' '); // Get poke from description string
-                                    PrintUtilities.printString($"\t\t-{current_team.PokemonInTeam[current_poke].Name} got {status} by {battle_data_lines[5].Split(":").Last().Trim(' ')}'s {battle_data_lines[4].Split(":").Last().Trim(' ')}\n", ConsoleColor.White, ConsoleColor.Black);
+                                    abilityOwner = turn_state_machine.GetPlayersMon(abilityOwner[1] - '0');
+                                    current_team.PokemonInTeam[current_poke].DamagingEventsAndUser[status] = abilityOwner; // Get poke from description string, it is the current mon of that player
+                                    PrintUtilities.printString($"\t\t-{current_team.PokemonInTeam[current_poke].Name} got {status} by {abilityOwner}'s {battle_data_lines[4].Split(":").Last().Trim(' ')}\n", ConsoleColor.White, ConsoleColor.Black);
                                     break;
                                 default: // Ignore the rest
                                     break;

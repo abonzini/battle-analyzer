@@ -1,0 +1,19 @@
+Pivot BVB,W/L,+/-,TT
+RESULT,L,-1,34
+POKEMON,K,D,Turns
+Kyurem,1,1,6.5
+Scizor-Mega,1,1,11.5
+Muk-Alola,1,1,4.0
+Swampert,0,1,2.0
+Keldeo-Resolute,2,1,5.5
+Jolteon,0,1,4.5
+
+superpanchi,W/L,+/-,TT
+RESULT,W,1,34
+POKEMON,K,D,Turns
+Beedrill-Mega,3,0,6.0
+Palafin-Hero,1,1,5.0
+Lunatone,1,1,4.0
+Wigglytuff,0,1,7.0
+Tornadus-Therian,1,1,5.5
+Rotom-Mow,0,1,6.5
