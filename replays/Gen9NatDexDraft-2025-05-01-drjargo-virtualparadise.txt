@@ -1,0 +1,19 @@
+DrJargo,W/L,+/-,TT
+RESULT,L,-4,40
+POKEMON,K,D,Turns
+Manaphy,0,1,12.5
+Zangoose,0,1,1.0
+Iron Valiant,1,1,1.0
+Ogerpon-Cornerstone,0,1,6.0
+Nidoqueen,0,1,4.5
+Zeraora,1,1,15.0
+
+Virtual Paradise,W/L,+/-,TT
+RESULT,W,4,40
+POKEMON,K,D,Turns
+Swampert,0,0,6.5
+Dudunsparce,2,1,14.5
+Roaring Moon,0,0,0.0
+Palafin-Hero,3,0,10.0
+Slowking-Galar,0,0,3.5
+Rillaboom,1,1,5.5

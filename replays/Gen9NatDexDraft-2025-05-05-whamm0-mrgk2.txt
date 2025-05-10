@@ -1,0 +1,19 @@
+whamm0,W/L,+/-,TT
+RESULT,L,-5,17
+POKEMON,K,D,Turns
+Iron Treads,0,1,3.5
+Latios,0,1,2.0
+Skeledirge,0,1,2.0
+Lucario,0,1,2.0
+Cloyster,0,1,3.5
+Togekiss,1,1,4.0
+
+MrG&K2,W/L,+/-,TT
+RESULT,W,5,17
+POKEMON,K,D,Turns
+Iron Bundle,2,0,6.0
+Walking Wake,4,0,5.0
+Meowscarada,0,1,3.0
+Drapion,0,0,3.0
+Scizor,0,0,0.0
+Gardevoir,0,0,0.0

@@ -1,0 +1,19 @@
+Baldspot7,W/L,+/-,TT
+RESULT,W,4,102
+POKEMON,K,D,Turns
+Floatzel,2,0,13.0
+Pelipper,0,0,39.0
+Claydol,0,0,21.0
+Thundurus-Therian,2,0,13.5
+Volcanion,2,1,13.5
+Kartana,0,1,2.0
+
+Astral Rifk,W/L,+/-,TT
+RESULT,L,-4,102
+POKEMON,K,D,Turns
+Kyurem,0,1,14.5
+Scizor-Mega,0,1,37.0
+Pecharunt,0,1,13.5
+Alomomola,1,1,23.0
+Raikou,0,1,6.0
+Urshifu-Rapid-Strike,0,1,8.0

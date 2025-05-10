@@ -1,0 +1,19 @@
+superpanchi,W/L,+/-,TT
+RESULT,L,-1,38
+POKEMON,K,D,Turns
+Donphan,1,1,8.0
+Tornadus-Therian,1,1,11.0
+Cinderace,0,1,2.5
+Beedrill-Mega,0,1,4.0
+Bisharp,2,1,8.0
+Palafin-Hero,1,1,4.5
+
+Soapyboogas,W/L,+/-,TT
+RESULT,W,1,38
+POKEMON,K,D,Turns
+Roserade,0,1,7.5
+Flygon,1,1,12.0
+Tapu Fini,0,1,5.0
+Lopunny-Mega,5,0,6.0
+Gholdengo,0,1,4.0
+Deoxys-Speed,0,1,3.5

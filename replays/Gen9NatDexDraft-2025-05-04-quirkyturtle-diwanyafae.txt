@@ -1,0 +1,19 @@
+quirkyturtle,W/L,+/-,TT
+RESULT,L,-4,46
+POKEMON,K,D,Turns
+Rotom-Heat,0,1,6.0
+Latias,0,1,5.0
+Iron Treads,0,1,7.5
+Orthworm,0,1,3.0
+Tapu Lele,1,1,3.5
+Gastrodon,1,1,21.0
+
+DiwanyaFae,W/L,+/-,TT
+RESULT,W,4,46
+POKEMON,K,D,Turns
+Swampert,1,1,8.5
+Sigilyph,4,0,6.0
+Muk-Alola,0,1,7.5
+Scizor-Mega,0,0,3.0
+Skeledirge,0,0,0.0
+Sylveon,1,0,21.0

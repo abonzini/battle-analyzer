@@ -1,0 +1,19 @@
+KayaniAso,W/L,+/-,TT
+RESULT,L,-6,30
+POKEMON,K,D,Turns
+Sceptile-Mega,0,1,4.5
+Iron Valiant,0,1,7.0
+Gliscor,0,1,5.5
+Araquanid,0,1,4.0
+Eelektross,0,1,4.0
+Metagross,0,1,5.0
+
+alonzita,W/L,+/-,TT
+RESULT,W,6,30
+POKEMON,K,D,Turns
+Tapu Bulu,0,0,0.0
+Hawlucha,0,0,3.0
+Fezandipiti,1,0,8.0
+Dudunsparce,2,0,11.5
+Chi-Yu,1,0,3.0
+Thundurus,2,0,4.5

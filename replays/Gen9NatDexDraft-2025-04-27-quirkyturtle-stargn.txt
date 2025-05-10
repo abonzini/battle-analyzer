@@ -1,0 +1,19 @@
+quirkyturtle,W/L,+/-,TT
+RESULT,L,-4,41
+POKEMON,K,D,Turns
+Sneasler,0,1,8.5
+Iron Treads,0,1,3.0
+Absol-Mega,1,1,3.0
+Gastrodon,0,1,3.0
+Trevenant,1,1,10.0
+Slowking,0,1,13.5
+
+StarGN,W/L,+/-,TT
+RESULT,W,4,41
+POKEMON,K,D,Turns
+Urshifu,5,0,10.0
+Celesteela,0,0,3.0
+Pecharunt,0,1,8.0
+Gardevoir-Mega,0,0,7.5
+Alomomola,0,0,5.0
+Ogerpon-Hearthflame,1,1,7.5

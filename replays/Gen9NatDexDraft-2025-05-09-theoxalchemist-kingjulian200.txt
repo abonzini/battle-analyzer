@@ -1,0 +1,19 @@
+The_OxAlChemist,W/L,+/-,TT
+RESULT,L,-1,31
+POKEMON,K,D,Turns
+Chi-Yu,1,1,4.5
+Torkoal,1,1,6.0
+Doublade,1,1,9.5
+Zoroark-Hisui,0,1,1.0
+Dachsbun,0,1,5.0
+Roaring Moon,2,1,5.0
+
+kingjulian200,W/L,+/-,TT
+RESULT,W,1,31
+POKEMON,K,D,Turns
+Aurorus,1,1,6.5
+Latias,1,1,11.0
+Urshifu-Rapid-Strike,4,0,5.5
+Dusclops,0,1,2.0
+Bisharp,0,1,4.0
+Cinderace,0,1,2.0

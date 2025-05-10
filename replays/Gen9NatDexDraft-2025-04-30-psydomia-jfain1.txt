@@ -1,0 +1,19 @@
+Psydomia,W/L,+/-,TT
+RESULT,W,3,30
+POKEMON,K,D,Turns
+Garchomp,1,1,3.5
+Rotom-Wash,1,1,9.0
+Terapagos-Terastal,0,0,6.5
+Annihilape,0,0,3.0
+Meowscarada,3,0,3.0
+Deoxys-Defense,0,1,5.0
+
+jfain1,W/L,+/-,TT
+RESULT,L,-3,30
+POKEMON,K,D,Turns
+Dragapult,0,1,3.0
+Venusaur-Mega,1,1,8.0
+Melmetal,1,1,4.0
+Great Tusk,0,1,4.5
+Hatterene,0,1,3.5
+Golisopod,1,1,7.0

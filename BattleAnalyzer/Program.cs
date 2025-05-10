@@ -62,8 +62,11 @@ namespace BattleAnalyzer
                 string[] battle_data_lines = line.Split('|'); // Get each element
                 if (battle_data_lines[1].Length == 0 || battle_data_lines[1][0] != '-') // Defines new event, lines with - are part of previous event
                 {
-                    current_attack.clear();
-                    current_hazard_setting.clear();
+                    if(battle_data_lines[1] != "replace") // for some reason replace is a new event but can happen mid attack so we need to ensure it doesn't clear the move
+                    {
+                        current_attack.clear();
+                        current_hazard_setting.clear();
+                    }
                     last_line = battle_data_lines[1]; // Registers what was the last command happened (attack, switch?)
                 }
                 switch (battle_data_lines[1]) // Check the second value (command, always?) and do different stuff for each
@@ -92,7 +95,10 @@ namespace BattleAnalyzer
                         PrintUtilities.printString($"{current_team}'s {current_poke} switch in\n", ConsoleColor.White, ConsoleColor.Black);
                         break;
                     case "turn": // VERY IMPORTANT, turn begins, mons start in turn full and (except first turn) the previous turn is loaded
-                        turn_state_machine.StartTurn(int.Parse(battle_data_lines[2]));
+                        {
+                            int turnNumber = int.Parse(battle_data_lines[2]);
+                            turn_state_machine.StartTurn(turnNumber);
+                        }
                         break;
                     case "move": // A mon used a move, maaaybe damaging, we'll see
                         // Move is an event, I record who used it

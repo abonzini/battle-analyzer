@@ -1,0 +1,19 @@
+crass thoughts,W/L,+/-,TT
+RESULT,W,5,13
+POKEMON,K,D,Turns
+Indeedee,1,0,2.5
+Sneasler,4,0,5.0
+Alakazam-Mega,1,0,2.0
+Leavanny,0,0,0.0
+Zygarde,0,0,0.0
+Scizor,0,1,3.5
+
+Pivot BVB,W/L,+/-,TT
+RESULT,L,-5,13
+POKEMON,K,D,Turns
+Meowscarada,1,1,3.5
+Mew,0,1,2.0
+Iron Moth,0,1,1.0
+Cyclizar,0,1,1.5
+Garchomp,0,1,3.0
+Corviknight,0,1,2.0

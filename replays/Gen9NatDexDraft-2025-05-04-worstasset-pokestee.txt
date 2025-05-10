@@ -1,0 +1,19 @@
+Worst Asset,W/L,+/-,TT
+RESULT,W,1,30
+POKEMON,K,D,Turns
+Diancie-Mega,0,1,1.0
+Gouging Fire,0,1,1.0
+Samurott-Hisui,2,0,3.0
+Skarmory,0,1,4.5
+Rotom-Frost,0,1,4.5
+Florges,4,1,16.0
+
+PokeStee,W/L,+/-,TT
+RESULT,L,-1,30
+POKEMON,K,D,Turns
+Raging Bolt,0,1,3.0
+Blastoise,1,1,4.0
+Tornadus-Therian,0,1,7.5
+Latias,4,1,8.5
+Weavile,0,1,2.5
+Garganacl,0,1,4.5

@@ -1,0 +1,19 @@
+CybOrganist,W/L,+/-,TT
+RESULT,W,5,14
+POKEMON,K,D,Turns
+Aerodactyl-Mega,3,0,6.0
+Zapdos,0,0,0.0
+Clodsire,0,0,0.0
+Forretress,1,1,6.0
+Diancie,1,0,2.0
+Cursola,0,0,0.0
+
+whamm0,W/L,+/-,TT
+RESULT,L,-5,14
+POKEMON,K,D,Turns
+Iron Treads,0,1,3.0
+Latios,0,1,4.0
+Skeledirge,0,1,3.0
+Lucario,0,1,1.0
+Cloyster,0,1,1.0
+Togekiss,1,1,2.0

@@ -1,0 +1,19 @@
+profjawbone,W/L,+/-,TT
+RESULT,L,-3,31
+POKEMON,K,D,Turns
+Metagross,1,1,2.0
+Quaquaval,0,1,6.0
+Tapu Bulu,1,1,4.5
+Exeggutor-Alola,1,1,9.0
+Grafaiai,0,1,4.0
+Terapagos-Terastal,0,1,5.5
+
+hax requires skill,W/L,+/-,TT
+RESULT,W,3,31
+POKEMON,K,D,Turns
+Tornadus-Therian,0,1,4.0
+Iron Treads,2,0,7.5
+Latios,1,0,8.0
+Diancie-Mega,1,1,3.0
+Urshifu,0,1,0.5
+Incineroar,1,0,8.0

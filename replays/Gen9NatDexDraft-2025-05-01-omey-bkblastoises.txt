@@ -1,0 +1,19 @@
+Omey,W/L,+/-,TT
+RESULT,L,-3,29
+POKEMON,K,D,Turns
+Empoleon,0,1,7.5
+Azumarill,2,1,6.5
+Tyrantrum,1,1,3.0
+Deoxys-Defense,0,1,8.0
+Darkrai,0,1,3.0
+Landorus-Therian,0,1,1.0
+
+bkblastoises,W/L,+/-,TT
+RESULT,W,3,29
+POKEMON,K,D,Turns
+Lopunny-Mega,1,0,4.0
+Gouging Fire,0,1,5.5
+Greninja-*,0,0,0.0
+Gliscor,0,1,4.5
+Deoxys-Speed,1,1,3.0
+Diancie,4,0,12.0

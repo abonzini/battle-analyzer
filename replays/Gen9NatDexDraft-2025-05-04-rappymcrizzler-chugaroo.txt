@@ -1,0 +1,19 @@
+Rappy_McRizzler,W/L,+/-,TT
+RESULT,L,-4,24
+POKEMON,K,D,Turns
+Ninetales,0,1,7.0
+Mamoswine,1,1,3.0
+Kartana,0,1,1.0
+Gouging Fire,1,1,7.0
+Venusaur,0,1,3.0
+Leafeon,0,1,3.0
+
+Chugaroo,W/L,+/-,TT
+RESULT,W,4,24
+POKEMON,K,D,Turns
+Sneasler,0,0,1.5
+Terapagos-Terastal,2,1,5.0
+Eelektross,1,1,4.5
+Hydreigon,2,0,3.0
+Mesprit,0,0,5.0
+Sylveon,1,0,5.0

@@ -1,0 +1,19 @@
+jfain1,W/L,+/-,TT
+RESULT,L,-3,32
+POKEMON,K,D,Turns
+Dragapult,2,1,5.0
+Venusaur-Mega,0,1,2.0
+Volcarona,1,1,4.0
+Great Tusk,0,1,9.0
+Hatterene,0,1,7.0
+Shuckle,0,1,5.0
+
+StarGN,W/L,+/-,TT
+RESULT,W,3,32
+POKEMON,K,D,Turns
+Celesteela,2,1,9.0
+Gardevoir-Mega,1,0,1.5
+Ogerpon-Hearthflame,1,1,7.0
+Urshifu,0,0,4.0
+Tsareena,1,1,4.5
+Alomomola,0,0,6.0

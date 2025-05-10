@@ -1,0 +1,19 @@
+DaddyNeedsYou-_-,W/L,+/-,TT
+RESULT,L,-5,31
+POKEMON,K,D,Turns
+Dragapult,0,1,4.0
+Celesteela,0,1,7.0
+Tapu Bulu,0,1,8.0
+Cresselia,0,1,5.0
+Nihilego,0,1,2.0
+Blastoise,1,1,5.0
+
+tokingpanda,W/L,+/-,TT
+RESULT,W,5,31
+POKEMON,K,D,Turns
+Rotom-Heat,1,1,9.5
+Urshifu,0,0,2.5
+Ogerpon-Wellspring,1,0,5.0
+Pecharunt,1,0,1.5
+Jirachi,2,0,11.0
+Comfey,1,0,1.5

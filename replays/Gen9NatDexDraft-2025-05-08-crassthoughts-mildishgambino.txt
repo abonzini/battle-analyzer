@@ -1,0 +1,19 @@
+crass thoughts,W/L,+/-,TT
+RESULT,L,-3,21
+POKEMON,K,D,Turns
+Porygon2,0,1,5.5
+Scizor,0,1,4.0
+Druddigon,0,1,4.0
+Sneasler,1,1,2.0
+Alakazam-Mega,0,1,1.5
+Zygarde,0,1,4.0
+
+mildish gambino,W/L,+/-,TT
+RESULT,W,3,21
+POKEMON,K,D,Turns
+Melmetal,2,0,4.0
+Cinderace,1,0,2.0
+Latias,1,1,4.0
+Gastrodon,1,1,6.0
+Bronzong,1,1,2.0
+Mimikyu-Busted,0,0,3.0

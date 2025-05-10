@@ -1,0 +1,19 @@
+hax requires skill,W/L,+/-,TT
+RESULT,L,-5,32
+POKEMON,K,D,Turns
+Tornadus-Therian,0,1,8.0
+Iron Treads,0,1,1.5
+Latios,0,1,8.0
+Diancie-Mega,0,1,2.5
+Rotom-Wash,0,1,3.5
+Shaymin,1,1,8.5
+
+Omey,W/L,+/-,TT
+RESULT,W,5,32
+POKEMON,K,D,Turns
+Empoleon,0,0,12.0
+Darkrai,2,0,3.0
+Beedrill-Mega,1,0,2.5
+Magneton,2,0,3.5
+Enamorus,1,0,3.0
+Landorus-Therian,0,1,8.0

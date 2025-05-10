@@ -1,0 +1,19 @@
+jackstrick321,W/L,+/-,TT
+RESULT,W,5,26
+POKEMON,K,D,Turns
+Nidoqueen,2,0,10.0
+Zapdos,1,0,9.0
+Heatran,0,0,0.0
+Centiskorch,1,1,4.0
+Greninja,1,0,1.0
+Kommo-o,1,0,2.0
+
+soapyboogas,W/L,+/-,TT
+RESULT,L,-5,26
+POKEMON,K,D,Turns
+Regieleki,0,1,4.5
+Gholdengo,0,1,4.0
+Flygon,0,1,6.5
+Tapu Fini,0,1,2.0
+Skarmory,0,1,3.0
+Lopunny-Mega,1,1,6.0

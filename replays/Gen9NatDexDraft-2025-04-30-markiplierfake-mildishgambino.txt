@@ -1,0 +1,19 @@
+markiplier (fake),W/L,+/-,TT
+RESULT,W,2,35
+POKEMON,K,D,Turns
+Great Tusk,1,1,3.5
+Jellicent,1,1,10.0
+Weavile,0,0,1.0
+Gholdengo,0,1,2.0
+Ogerpon-Hearthflame,3,0,6.5
+Clefable,0,1,12.0
+
+mildish gambino,W/L,+/-,TT
+RESULT,L,-2,35
+POKEMON,K,D,Turns
+Melmetal,2,1,6.0
+Latias,0,1,3.0
+Mimikyu,1,1,6.0
+Gastrodon,0,1,12.0
+Bronzong,1,1,5.0
+Roserade,0,1,3.0

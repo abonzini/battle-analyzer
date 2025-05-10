@@ -1,0 +1,19 @@
+alonzita,W/L,+/-,TT
+RESULT,W,3,27
+POKEMON,K,D,Turns
+Thundurus,0,1,3.0
+Slowbro,2,0,6.5
+Chi-Yu,0,0,0.0
+Dudunsparce,0,1,4.0
+Tapu Bulu,1,0,10.0
+Hawlucha,1,1,3.5
+
+jfain1,W/L,+/-,TT
+RESULT,L,-3,27
+POKEMON,K,D,Turns
+Dragapult,0,1,4.0
+Venusaur-Mega,1,1,7.0
+Volcarona,0,1,0.5
+Melmetal,1,1,7.5
+Hatterene,0,1,2.0
+Golisopod,1,1,6.0
