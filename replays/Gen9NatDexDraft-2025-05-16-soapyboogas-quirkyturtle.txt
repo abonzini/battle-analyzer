@@ -1,0 +1,19 @@
+soapyboogas,W/L,+/-,TT
+RESULT,L,-1,29
+POKEMON,K,D,Turns
+Deoxys-Speed,1,1,3.5
+Tyranitar,0,1,5.5
+Lopunny-Mega,2,1,3.0
+Tapu Fini,0,1,7.0
+Flygon,1,1,5.5
+Gholdengo,1,1,4.5
+
+quirkyturtle,W/L,+/-,TT
+RESULT,W,1,29
+POKEMON,K,D,Turns
+Tapu Lele,0,1,3.5
+Rotom-Heat,2,1,5.5
+Latias,1,1,6.0
+Slowking,3,0,3.0
+Iron Treads,0,1,5.0
+Trevenant,0,1,6.0

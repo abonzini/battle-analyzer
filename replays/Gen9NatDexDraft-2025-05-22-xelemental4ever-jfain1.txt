@@ -1,0 +1,19 @@
+Xelemental 4ever,W/L,+/-,TT
+RESULT,L,-4,25
+POKEMON,K,D,Turns
+Noivern,1,1,5.0
+Diancie,0,1,5.5
+Stakataka,0,1,2.0
+Scizor,1,1,4.0
+Hitmonlee,0,1,5.0
+Ting-Lu,0,1,3.5
+
+jfain1,W/L,+/-,TT
+RESULT,W,4,25
+POKEMON,K,D,Turns
+Dragapult,1,0,1.0
+Venusaur-Mega,5,0,17.0
+Volcarona,0,1,2.0
+Great Tusk,0,0,0.0
+Hatterene,0,0,2.0
+Golisopod,0,1,3.0

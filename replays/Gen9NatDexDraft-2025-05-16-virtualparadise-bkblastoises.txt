@@ -1,0 +1,19 @@
+Virtual Paradise,W/L,+/-,TT
+RESULT,L,-2,27
+POKEMON,K,D,Turns
+Palafin-Hero,2,1,9.5
+Rillaboom,1,1,2.5
+Swampert,0,1,3.0
+Roaring Moon,1,1,5.0
+Tinkaton,0,1,5.0
+Dudunsparce,0,1,2.0
+
+bkblastoises,W/L,+/-,TT
+RESULT,W,2,27
+POKEMON,K,D,Turns
+Gouging Fire,4,0,7.0
+Lopunny-Mega,1,1,9.0
+Escavalier,0,1,4.0
+Cradily,0,0,2.0
+Greninja,1,1,3.0
+Deoxys-Speed,0,1,2.0

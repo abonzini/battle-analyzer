@@ -321,7 +321,7 @@ namespace BattleAnalyzer
                         }
                         else
                         {
-                            // Just ignore these for now
+                            start_effect = battle_data_lines[3];
                         }
 
                         switch (start_effect)
@@ -334,7 +334,8 @@ namespace BattleAnalyzer
                                 PrintUtilities.printString($"\t\t-{current_poke} scheduled a {start_effect} against {current_team.Name}\n", ConsoleColor.White, ConsoleColor.Black);
                                 break;
                             case "Leech Seed":
-                                // This is caused by an attack hopefully and so we track the user
+                            case "Salt Cure":
+                                // These are caused by an attack hopefully and so we track the user
                                 current_team.PokemonInTeam[current_poke].DamagingEventsAndUser[start_effect] = current_attack.user;
                                 break;
                             default:

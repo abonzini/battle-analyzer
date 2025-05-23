@@ -1,0 +1,19 @@
+Artman_Shan,W/L,+/-,TT
+RESULT,L,-2,24
+POKEMON,K,D,Turns
+Tapu Koko,0,1,1.0
+Celesteela,1,1,6.0
+Donphan,1,1,5.0
+Blastoise-Mega,0,1,3.0
+Zapdos-Galar,1,1,4.0
+Accelgor,1,1,5.0
+
+PLZXEN,W/L,+/-,TT
+RESULT,W,2,24
+POKEMON,K,D,Turns
+Celebi,3,0,6.0
+Goodra,0,1,3.0
+Gholdengo,0,1,2.0
+Spectrier,3,0,5.0
+Stunfisk,0,1,4.0
+Tapu Fini,0,1,4.0

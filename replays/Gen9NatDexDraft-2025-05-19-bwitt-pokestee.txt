@@ -1,0 +1,19 @@
+bwitt,W/L,+/-,TT
+RESULT,L,-5,28
+POKEMON,K,D,Turns
+Landorus-Therian,0,1,2.0
+Fezandipiti,1,1,8.0
+Rotom-Mow,0,1,8.5
+Gallade,0,1,1.0
+Darkrai,0,1,2.0
+Arcanine-Hisui,0,1,6.5
+
+PokeStee,W/L,+/-,TT
+RESULT,W,5,28
+POKEMON,K,D,Turns
+Raging Bolt,1,1,7.5
+Tornadus-Therian,0,0,1.5
+Latias,0,0,0.0
+Weavile,0,0,0.0
+Garganacl,5,0,18.0
+Empoleon,0,0,1.0

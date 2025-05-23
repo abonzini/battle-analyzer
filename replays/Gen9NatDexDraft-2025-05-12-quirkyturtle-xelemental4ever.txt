@@ -1,0 +1,19 @@
+quirkyturtle,W/L,+/-,TT
+RESULT,W,2,25
+POKEMON,K,D,Turns
+Gastrodon,0,1,4.0
+Absol-Mega,0,1,2.0
+Sneasler,2,0,2.0
+Tapu Lele,3,1,6.0
+Trevenant,1,0,7.0
+Iron Treads,0,1,4.0
+
+Xelemental 4ever,W/L,+/-,TT
+RESULT,L,-2,25
+POKEMON,K,D,Turns
+Noivern,0,1,3.5
+Diancie-Mega,1,1,6.5
+Scizor,1,1,2.5
+Ting-Lu,0,1,2.5
+Ogerpon-Wellspring,1,1,8.0
+Galvantula,1,1,2.0

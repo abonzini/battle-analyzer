@@ -1,0 +1,19 @@
+StarGN,W/L,+/-,TT
+RESULT,W,3,48
+POKEMON,K,D,Turns
+Raikou,0,1,3.0
+Urshifu,1,0,6.5
+Alomomola,0,0,8.5
+Gardevoir,0,1,1.0
+Pecharunt,1,1,11.0
+Celesteela,4,0,18.0
+
+alonzita,W/L,+/-,TT
+RESULT,L,-3,48
+POKEMON,K,D,Turns
+Thundurus,0,1,9.5
+Tapu Bulu,0,1,9.5
+Frosmoth,0,1,6.0
+Fezandipiti,1,1,10.0
+Hawlucha,0,1,3.5
+Chi-Yu,2,1,9.5

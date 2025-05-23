@@ -1,0 +1,19 @@
+Astral Rifk,W/L,+/-,TT
+RESULT,W,5,97
+POKEMON,K,D,Turns
+Pecharunt,0,0,23.5
+Arboliva,1,0,14.0
+Scizor-Mega,0,0,17.0
+Moltres,1,0,17.0
+Alomomola,1,0,16.5
+Raikou,2,1,9.0
+
+mildish gambino,W/L,+/-,TT
+RESULT,L,-5,97
+POKEMON,K,D,Turns
+Melmetal,0,1,18.0
+Latias,0,1,13.0
+Roserade,0,1,30.0
+Dracovish,0,1,15.0
+Gastrodon,1,1,15.0
+Bronzong,0,1,6.0

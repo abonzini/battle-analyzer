@@ -1,0 +1,19 @@
+hax requires skill,W/L,+/-,TT
+RESULT,L,-2,35
+POKEMON,K,D,Turns
+Tornadus-Therian,1,1,6.0
+Urshifu,1,1,3.5
+Diancie,1,1,5.0
+Iron Treads,1,1,7.5
+Rotom-Wash,0,1,5.5
+Shaymin,0,1,7.5
+
+Virtual Paradise,W/L,+/-,TT
+RESULT,W,2,35
+POKEMON,K,D,Turns
+Palafin-Hero,1,0,6.0
+Roaring Moon,3,0,6.0
+Tinkaton,0,1,4.0
+Dudunsparce,2,1,8.0
+Slowking-Galar,0,1,7.5
+Swampert,0,1,3.5

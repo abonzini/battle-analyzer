@@ -1,0 +1,19 @@
+hax requires skill,W/L,+/-,TT
+RESULT,W,5,26
+POKEMON,K,D,Turns
+Urshifu,1,0,3.0
+Tornadus-Therian,4,0,7.0
+Rotom-Wash,1,1,8.0
+Latios,0,0,0.0
+Shaymin,0,0,2.0
+Iron Treads,0,0,6.0
+
+0TacoBoi0,W/L,+/-,TT
+RESULT,L,-5,26
+POKEMON,K,D,Turns
+Claydol,0,1,10.0
+Pelipper,0,1,3.0
+Floatzel,1,1,2.0
+Tapu Lele,0,1,4.0
+Kartana,0,1,4.0
+Thundurus-Therian,0,1,3.0

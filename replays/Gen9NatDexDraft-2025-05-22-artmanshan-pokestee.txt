@@ -1,0 +1,19 @@
+Artman_Shan,W/L,+/-,TT
+RESULT,L,-1,37
+POKEMON,K,D,Turns
+Tapu Koko,1,1,3.0
+Gastrodon,0,1,10.0
+Zapdos-Galar,1,1,3.0
+Celesteela,2,1,11.0
+Blastoise,1,1,6.0
+Ribombee,0,1,4.0
+
+PokeStee,W/L,+/-,TT
+RESULT,W,1,37
+POKEMON,K,D,Turns
+Raging Bolt,0,1,4.0
+Tornadus-Therian,0,1,6.0
+Latias,3,0,6.0
+Weavile,0,1,4.0
+Garganacl,3,1,10.0
+Empoleon,0,1,7.0

@@ -1,0 +1,19 @@
+DaddyNeedsYou-_-,W/L,+/-,TT
+RESULT,L,-4,19
+POKEMON,K,D,Turns
+Dragapult,1,1,4.0
+Tapu Bulu,1,1,4.0
+Cresselia,0,1,7.0
+Nihilego,0,1,1.0
+Blastoise,0,1,2.0
+Gallade,0,1,1.0
+
+MarioLuigiMen4,W/L,+/-,TT
+RESULT,W,4,19
+POKEMON,K,D,Turns
+Chien-Pao,5,0,7.5
+Sandy Shocks,0,1,3.5
+Alakazam-Mega,0,0,1.0
+Revavroom,1,1,7.0
+Alomomola,0,0,0.0
+Gengar,0,0,0.0

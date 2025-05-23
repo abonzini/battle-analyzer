@@ -1,0 +1,19 @@
+Bkblastoises,W/L,+/-,TT
+RESULT,L,-1,38
+POKEMON,K,D,Turns
+Gouging Fire,0,1,5.5
+Lopunny,1,1,9.0
+Greninja,2,1,2.5
+Diancie,0,1,5.0
+Deoxys-Speed,2,1,8.5
+Gliscor,0,1,7.5
+
+cvalent7ne,W/L,+/-,TT
+RESULT,W,1,38
+POKEMON,K,D,Turns
+Gholdengo,0,1,5.0
+Zapdos,2,0,9.0
+Great Tusk,1,1,3.5
+Clefable,1,1,10.0
+Weavile,0,1,1.0
+Jellicent,1,1,9.5

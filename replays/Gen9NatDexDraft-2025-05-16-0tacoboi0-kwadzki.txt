@@ -1,0 +1,19 @@
+0TacoBoi0,W/L,+/-,TT
+RESULT,L,-3,20
+POKEMON,K,D,Turns
+Kartana,1,1,5.0
+Floatzel,0,1,1.0
+Archaludon,0,1,7.0
+Tapu Lele,0,1,1.0
+Espeon,0,1,2.0
+Thundurus-Therian,2,1,4.0
+
+kwadzki,W/L,+/-,TT
+RESULT,W,3,20
+POKEMON,K,D,Turns
+Terapagos-Terastal,2,1,4.0
+Chandelure,2,1,6.5
+Swampert-Mega,0,1,3.5
+Raging Bolt,1,0,3.0
+Metagross,1,0,3.0
+Quaquaval,0,0,0.0

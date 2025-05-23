@@ -1,0 +1,19 @@
+Brewbjerg,W/L,+/-,TT
+RESULT,W,5,24
+POKEMON,K,D,Turns
+Thundurus,3,0,9.5
+Espeon,1,0,4.5
+Volcanion,2,0,3.0
+Grimmsnarl,0,1,4.5
+Salamence,0,0,0.0
+Hitmontop,0,0,2.5
+
+Artman_Shan,W/L,+/-,TT
+RESULT,L,-5,24
+POKEMON,K,D,Turns
+Tapu Koko,0,1,2.0
+Accelgor,0,1,3.5
+Celesteela,1,1,5.0
+Blastoise,0,1,3.0
+Infernape,0,1,3.0
+Gastrodon,0,1,7.5

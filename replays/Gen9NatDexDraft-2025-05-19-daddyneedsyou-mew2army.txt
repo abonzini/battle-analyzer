@@ -1,0 +1,19 @@
+DaddyNeedsYou-_-,W/L,+/-,TT
+RESULT,W,2,34
+POKEMON,K,D,Turns
+Celesteela,0,1,4.0
+Mandibuzz,0,0,0.0
+Cresselia,2,0,17.5
+Gallade,3,1,4.0
+Blastoise,1,1,4.0
+Dragapult,0,1,4.5
+
+mew2army,W/L,+/-,TT
+RESULT,L,-2,34
+POKEMON,K,D,Turns
+Scizor,1,1,6.5
+Palafin-Hero,1,1,3.0
+Whimsicott,0,1,8.0
+Ursaluna-Bloodmoon,0,1,8.5
+Slither Wing,0,1,0.5
+Thundurus-Therian,1,1,7.5

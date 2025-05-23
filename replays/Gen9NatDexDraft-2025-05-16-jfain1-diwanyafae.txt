@@ -1,0 +1,19 @@
+jfain1,W/L,+/-,TT
+RESULT,W,2,32
+POKEMON,K,D,Turns
+Dragapult,3,0,3.5
+Venusaur-Mega,1,1,10.5
+Volcarona,1,0,6.0
+Melmetal,0,1,2.0
+Great Tusk,0,1,4.0
+Shuckle,1,1,6.0
+
+DiwanyaFae,W/L,+/-,TT
+RESULT,L,-2,32
+POKEMON,K,D,Turns
+Sigilyph,2,1,6.5
+Skeledirge,0,1,7.0
+Swampert,1,1,3.0
+Scizor-Mega,0,1,5.0
+Jolteon,0,1,3.5
+Muk-Alola,0,1,7.0

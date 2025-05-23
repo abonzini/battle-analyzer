@@ -1,0 +1,19 @@
+DrJargo,W/L,+/-,TT
+RESULT,L,-3,22
+POKEMON,K,D,Turns
+Zeraora,0,1,1.0
+Nidoqueen,0,1,3.0
+Arcanine-Hisui,0,1,5.0
+Iron Valiant,2,1,8.0
+Swellow,0,1,1.0
+Manaphy,1,1,4.0
+
+jacksepticlie,W/L,+/-,TT
+RESULT,W,3,22
+POKEMON,K,D,Turns
+Great Tusk,5,0,6.0
+Ogerpon-Hearthflame,0,1,2.5
+Weavile,0,1,4.0
+Clefable,0,0,3.0
+Hydreigon,1,0,2.0
+Muk,0,1,4.5
