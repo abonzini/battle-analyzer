@@ -1,0 +1,19 @@
+bluefox08,W/L,+/-,TT
+RESULT,W,1,26
+POKEMON,K,D,Turns
+Regieleki,2,0,4.0
+Lopunny,1,1,3.0
+Exeggutor-Alola,0,1,4.0
+Scizor,0,1,5.0
+Tsareena,2,1,3.0
+Tapu Fini,0,1,7.0
+
+kingjulian200,W/L,+/-,TT
+RESULT,L,-1,26
+POKEMON,K,D,Turns
+Dusclops,0,1,6.0
+Toucannon,1,1,3.0
+Gardevoir,1,1,3.0
+Cinderace,2,1,6.0
+Tapu Lele,0,1,5.0
+Latias,1,1,3.0

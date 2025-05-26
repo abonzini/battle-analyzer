@@ -174,7 +174,7 @@ namespace BattleAnalyzer
                                 current_hazard_setting.player_user = current_team.TeamNumber;
                                 break;
                             case "confusion": // Oh crap this may've been caused by an attack?! in that case current poke is the victim and depends on attack
-                                switch (current_attack.attack_name) // Todo shadow puppeteer
+                                switch (current_attack.attack_name)
                                 {
                                     case "Hurricane": // Attacks that cause cnf
                                     case "Swagger":
@@ -309,37 +309,50 @@ namespace BattleAnalyzer
                         }
                         break;
                     case "-start":
-                        // mon got status, salt cure? what
-                        string[] start_data = battle_data_lines[2].Split(':');
-                        current_team = battle_data.getTeam(start_data[0]);
-                        current_poke = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
-                        string start_effect = "";
+                        {
+                            string enemy_poke = ""; // Aux variable
+                            // mon got status, salt cure? what
+                            string[] start_data = battle_data_lines[2].Split(':');
+                            current_team = battle_data.getTeam(start_data[0]);
+                            current_poke = turn_state_machine.GetPlayersMon(current_team.TeamNumber);
+                            string start_effect = "";
 
-                        if (battle_data_lines[3].Contains("move: ")) // move caused this
-                        {
-                            start_effect = battle_data_lines[3].Replace("move: ", "");
-                        }
-                        else
-                        {
-                            start_effect = battle_data_lines[3];
-                        }
+                            if (battle_data_lines[3].Contains("move: ")) // move caused this
+                            {
+                                start_effect = battle_data_lines[3].Replace("move: ", "");
+                            }
+                            else if (battle_data_lines.Length > 4 && battle_data_lines[4].Contains("Poison Puppeteer")) // for some reason confusion happens here
+                            {
+                                enemy_poke = battle_data_lines[5].Replace("[of] ","").Split(':')[0]; // Get poison pup team string
+                                enemy_poke = turn_state_machine.GetPlayersMon((battle_data.getTeam(enemy_poke)).TeamNumber); // Got the poison pupeteer (i guess a pecharunt)
+                                start_effect = battle_data_lines[3];
+                            }
+                            else
+                            {
+                                start_effect = battle_data_lines[3];
+                            }
 
-                        switch (start_effect)
-                        {
-                            case "Future Sight":
-                            case "Doom Desire":
-                                // These attacks set a "Hazard" on the opp's field, similar to sidestart
-                                current_team = battle_data.getOppositeTeam(current_team.TeamNumber); // Set hazard on the opponent's
-                                current_team.DamagingFieldEffectAndLastUser[start_effect] = current_poke; // Now there's a field effect that may grant kills
-                                PrintUtilities.printString($"\t\t-{current_poke} scheduled a {start_effect} against {current_team.Name}\n", ConsoleColor.White, ConsoleColor.Black);
-                                break;
-                            case "Leech Seed":
-                            case "Salt Cure":
-                                // These are caused by an attack hopefully and so we track the user
-                                current_team.PokemonInTeam[current_poke].DamagingEventsAndUser[start_effect] = current_attack.user;
-                                break;
-                            default:
-                                break;
+                            switch (start_effect)
+                            {
+                                case "Future Sight":
+                                case "Doom Desire":
+                                    // These attacks set a "Hazard" on the opp's field, similar to sidestart
+                                    current_team = battle_data.getOppositeTeam(current_team.TeamNumber); // Set hazard on the opponent's
+                                    current_team.DamagingFieldEffectAndLastUser[start_effect] = current_poke; // Now there's a field effect that may grant kills
+                                    PrintUtilities.printString($"\t\t-{current_poke} scheduled a {start_effect} against {current_team.Name}\n", ConsoleColor.White, ConsoleColor.Black);
+                                    break;
+                                case "Leech Seed":
+                                case "Salt Cure":
+                                    // These are caused by an attack hopefully and so we track the user
+                                    current_team.PokemonInTeam[current_poke].DamagingEventsAndUser[start_effect] = current_attack.user;
+                                    break;
+                                case "confusion":
+                                    // Confusion can be starting here also because of poison pupeteer
+                                    current_team.PokemonInTeam[current_poke].DamagingEventsAndUser[start_effect] = enemy_poke;
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                         break;
                     case "-end":

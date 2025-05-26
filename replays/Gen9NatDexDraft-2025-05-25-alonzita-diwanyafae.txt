@@ -1,0 +1,19 @@
+alonzita,W/L,+/-,TT
+RESULT,L,-3,42
+POKEMON,K,D,Turns
+Excadrill,0,1,3.0
+Silicobra,0,1,3.0
+Grimmsnarl,0,1,8.0
+Tapu Bulu,0,1,9.0
+Slowbro,1,1,16.0
+Chi-Yu,1,1,3.0
+
+DiwanyaFae,W/L,+/-,TT
+RESULT,W,3,42
+POKEMON,K,D,Turns
+Quaquaval,0,1,5.0
+Indeedee,0,1,2.0
+Sigilyph,0,0,3.0
+Muk-Alola,0,0,20.0
+Kartana,5,0,9.0
+Sandy Shocks,1,1,3.0

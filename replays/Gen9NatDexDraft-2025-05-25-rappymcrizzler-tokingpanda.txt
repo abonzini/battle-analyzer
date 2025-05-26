@@ -1,0 +1,19 @@
+Rappy_McRizzler,W/L,+/-,TT
+RESULT,L,-3,23
+POKEMON,K,D,Turns
+Ninetales,0,1,5.0
+Gouging Fire,0,1,5.0
+Mamoswine,0,1,3.0
+Venusaur,2,1,4.0
+Scream Tail,0,1,1.5
+Hawlucha,1,1,4.5
+
+tokingpanda,W/L,+/-,TT
+RESULT,W,3,23
+POKEMON,K,D,Turns
+Chandelure,3,0,4.0
+Urshifu-*,0,0,0.0
+Noivern,2,0,3.5
+Comfey,0,1,3.0
+Pecharunt,1,1,4.5
+Rotom-Heat,0,1,8.0

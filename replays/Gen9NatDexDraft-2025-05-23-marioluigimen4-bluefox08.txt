@@ -1,0 +1,19 @@
+MarioLuigiMen4,W/L,+/-,TT
+RESULT,W,2,19
+POKEMON,K,D,Turns
+Chien-Pao,1,0,1.5
+Alakazam,0,1,0.5
+Ogerpon-Hearthflame,2,0,2.5
+Sandy Shocks,1,1,7.0
+Revavroom,1,1,2.5
+Alomomola,1,1,5.0
+
+bluefox08,W/L,+/-,TT
+RESULT,L,-2,19
+POKEMON,K,D,Turns
+Hitmonlee,1,1,3.0
+Regieleki,1,1,5.0
+Lopunny,0,1,3.0
+Mew,1,1,5.0
+Scizor,1,1,2.0
+Maushold,0,1,1.0

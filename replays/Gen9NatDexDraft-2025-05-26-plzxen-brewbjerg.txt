@@ -1,0 +1,19 @@
+PLZXEN,W/L,+/-,TT
+RESULT,L,-4,26
+POKEMON,K,D,Turns
+Celebi,1,1,6.0
+Goodra,0,1,4.5
+Gholdengo,0,1,1.0
+Tapu Fini,0,1,9.0
+Ogerpon-Hearthflame,1,1,4.5
+Amoonguss,0,1,1.0
+
+Brewbjerg,W/L,+/-,TT
+RESULT,W,4,26
+POKEMON,K,D,Turns
+Hitmontop,1,0,1.0
+Volcanion,3,1,6.5
+Thundurus,1,0,8.5
+Salamence,0,0,0.0
+Aegislash,1,1,4.5
+Grimmsnarl,0,0,5.5
