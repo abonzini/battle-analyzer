@@ -1,0 +1,19 @@
+DrJargo,W/L,+/-,TT
+RESULT,L,-1,85
+POKEMON,K,D,Turns
+Arcanine-Hisui,1,1,10.0
+Nidoqueen,0,1,4.0
+Zeraora,1,1,7.5
+Iron Valiant,1,1,7.0
+Swellow,0,1,12.0
+Hydrapple,2,1,44.5
+
+Astral Rifk,W/L,+/-,TT
+RESULT,W,1,85
+POKEMON,K,D,Turns
+Alomomola,0,1,18.5
+Scizor-Mega,4,0,30.0
+Arboliva,0,1,6.0
+Pecharunt,0,1,3.5
+Moltres,1,1,8.5
+Ting-Lu,1,1,18.5

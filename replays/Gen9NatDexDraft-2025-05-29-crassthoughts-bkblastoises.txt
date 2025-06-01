@@ -1,0 +1,19 @@
+crass thoughts,W/L,+/-,TT
+RESULT,L,-4,14
+POKEMON,K,D,Turns
+Zygarde,0,0,0.0
+Scream Tail,0,0,0.0
+Porygon2,1,1,5.0
+Sneasler,0,0,1.5
+Leavanny,0,1,6.0
+Alakazam,0,0,0.5
+
+Bkblastoises,W/L,+/-,TT
+RESULT,L,-4,14
+POKEMON,K,D,Turns
+Gouging Fire,0,1,2.5
+Gliscor,0,0,3.0
+Escavalier,0,0,1.0
+Deoxys-Speed,1,1,4.5
+Greninja,0,0,1.0
+Diancie,1,0,1.0

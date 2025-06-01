@@ -1,0 +1,19 @@
+Worst Asset,W/L,+/-,TT
+RESULT,L,-1,42
+POKEMON,K,D,Turns
+Gouging Fire,2,1,4.0
+Samurott-Hisui,0,1,5.5
+Skarmory,1,1,14.5
+Rotom-Frost,1,1,10.5
+Florges,0,1,5.0
+Diancie,1,1,2.5
+
+MrG&K2,W/L,+/-,TT
+RESULT,W,1,42
+POKEMON,K,D,Turns
+Iron Bundle,1,1,6.5
+Meowscarada,2,0,2.0
+Gligar,2,1,24.5
+Drapion,0,1,2.0
+Talonflame,1,1,3.0
+Scizor,0,1,4.0

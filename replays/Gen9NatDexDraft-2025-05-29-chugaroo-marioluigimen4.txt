@@ -1,0 +1,19 @@
+Chugaroo,W/L,+/-,TT
+RESULT,L,-2,27
+POKEMON,K,D,Turns
+Sneasler,1,1,5.0
+Iron Treads,2,1,5.0
+Hydreigon,1,1,3.0
+Sylveon,0,1,7.0
+Mesprit,0,1,5.0
+Terapagos-Terastal,0,1,2.0
+
+MarioLuigiMen4,W/L,+/-,TT
+RESULT,W,2,27
+POKEMON,K,D,Turns
+Alakazam,0,1,3.0
+Chien-Pao,2,1,5.0
+Sandy Shocks,2,0,4.5
+Alomomola,1,0,8.0
+Revavroom,0,1,2.0
+Ogerpon-Hearthflame,1,1,4.5

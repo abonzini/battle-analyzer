@@ -1,0 +1,19 @@
+Xelemental 4ever,W/L,+/-,TT
+RESULT,W,3,32
+POKEMON,K,D,Turns
+Scizor,2,0,6.0
+Volcanion,1,0,9.0
+Galvantula,0,1,3.0
+Diancie,2,1,8.0
+Stakataka,0,0,0.0
+Ting-Lu,1,1,6.0
+
+alonzita,W/L,+/-,TT
+RESULT,L,-3,32
+POKEMON,K,D,Turns
+Slowbro,3,1,14.0
+Dudunsparce,0,1,4.0
+Thundurus,0,1,1.5
+Excadrill,0,1,4.5
+Fezandipiti,0,1,5.0
+Chi-Yu,0,1,3.0

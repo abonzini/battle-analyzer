@@ -1,0 +1,19 @@
+quirkyturtle,W/L,+/-,TT
+RESULT,L,-3,45
+POKEMON,K,D,Turns
+Zygarde,1,1,15.0
+Pangoro,1,1,6.0
+Latias,0,1,6.0
+Sneasler,0,1,4.5
+Rotom-Heat,0,1,5.0
+Iron Treads,1,1,8.5
+
+jackstrick321,W/L,+/-,TT
+RESULT,W,3,45
+POKEMON,K,D,Turns
+Rillaboom,1,0,5.5
+Heatran,0,1,7.0
+Avalugg-Hisui,0,1,13.0
+Iron Crown,0,0,6.0
+Greninja,3,0,5.0
+Banette,1,1,8.5

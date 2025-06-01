@@ -156,6 +156,15 @@ namespace BattleAnalyzer
                         // Got all info Í need, update
                         current_team.ChangeMonForm(ex_mon, current_poke); // Notify all elements of change!
                         turn_state_machine.ChangeMonName(current_team.TeamNumber, ex_mon, current_poke);
+                        // Need to also update current move and destiny bond tracker
+                        if(current_attack.user == ex_mon)
+                        { 
+                            current_attack.user = current_poke; 
+                        }
+                        if(destiny_bond_tracker.user == ex_mon)
+                        {
+                            destiny_bond_tracker.user = current_poke;
+                        }
                         PrintUtilities.printString($"{ex_mon} became {current_poke}\n", ConsoleColor.White, ConsoleColor.Black);
                         break;
                     case "-activate":

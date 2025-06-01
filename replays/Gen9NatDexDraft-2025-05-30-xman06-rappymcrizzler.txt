@@ -1,0 +1,19 @@
+xman06,W/L,+/-,TT
+RESULT,L,-2,20
+POKEMON,K,D,Turns
+Aerodactyl,0,1,1.5
+Excadrill,3,1,8.0
+Hippowdon,0,1,4.0
+Gyarados,0,1,2.0
+Magnezone,1,1,4.0
+Lucario,0,1,0.5
+
+Rappy_McRizzler,W/L,+/-,TT
+RESULT,W,2,20
+POKEMON,K,D,Turns
+Mamoswine,3,1,5.0
+Scream Tail,1,0,1.0
+Suicune,0,1,5.5
+Kartana,2,1,3.5
+Ninetales,0,1,3.5
+Hawlucha,0,0,1.5

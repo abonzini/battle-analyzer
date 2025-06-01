@@ -1,0 +1,19 @@
+Autometalogolex11,W/L,+/-,TT
+RESULT,L,-2,33
+POKEMON,K,D,Turns
+Lopunny,1,1,5.5
+Rotom-Wash,0,1,12.0
+Galvantula,0,1,2.0
+Tsareena,1,1,5.5
+Gliscor,0,1,2.0
+Heatran,2,1,6.0
+
+MrG&K2,W/L,+/-,TT
+RESULT,W,2,33
+POKEMON,K,D,Turns
+Iron Bundle,5,0,7.0
+Meowscarada,0,0,4.0
+Walking Wake,0,1,9.0
+Passimian,1,1,4.0
+Scizor,0,1,4.0
+Drapion,0,1,5.0

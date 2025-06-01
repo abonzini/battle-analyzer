@@ -1,0 +1,19 @@
+KayaniAso,W/L,+/-,TT
+RESULT,L,-6,19
+POKEMON,K,D,Turns
+Iron Valiant,0,1,1.0
+Eelektross,0,1,2.0
+Kangaskhan,0,1,8.0
+Flareon,0,1,2.0
+Mandibuzz,0,1,3.0
+Sceptile,0,1,3.0
+
+StarGN,W/L,+/-,TT
+RESULT,W,6,19
+POKEMON,K,D,Turns
+Celesteela,0,0,2.0
+Urshifu,1,0,2.0
+Pecharunt,2,0,9.0
+Ogerpon-Hearthflame,0,0,0.0
+Alomomola,0,0,0.0
+Gardevoir-Mega,3,0,6.0

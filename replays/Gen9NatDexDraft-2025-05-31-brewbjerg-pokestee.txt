@@ -1,0 +1,19 @@
+Brewbjerg,W/L,+/-,TT
+RESULT,W,5,29
+POKEMON,K,D,Turns
+Hitmontop,1,0,1.0
+Thundurus,1,0,6.5
+Volcanion,0,0,4.0
+Grimmsnarl,0,0,1.5
+Sylveon,3,1,12.0
+Scizor-Mega,1,0,4.0
+
+PokeStee,W/L,+/-,TT
+RESULT,L,-5,29
+POKEMON,K,D,Turns
+Raging Bolt,0,1,5.0
+Blastoise,0,1,4.0
+Tornadus-Therian,0,1,9.3
+Latias,1,1,3.0
+Weavile,0,1,5.3
+Garganacl,0,1,2.3

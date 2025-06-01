@@ -1,0 +1,19 @@
+BloomingDino,W/L,+/-,TT
+RESULT,W,2,25
+POKEMON,K,D,Turns
+Terapagos-Terastal,0,1,6.5
+Tornadus,0,1,2.5
+Chi-Yu,4,0,5.5
+Toxapex,1,0,1.0
+Tapu Lele,0,1,4.0
+Rhydon,1,1,5.5
+
+Artman_Shan,W/L,+/-,TT
+RESULT,L,-2,25
+POKEMON,K,D,Turns
+Tapu Koko,1,1,2.0
+Gastrodon,1,1,8.0
+Celesteela,0,1,6.0
+Blastoise,1,1,4.0
+Zapdos-Galar,1,1,4.0
+Mawile,0,1,1.0
